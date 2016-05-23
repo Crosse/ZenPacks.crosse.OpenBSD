@@ -1,0 +1,21 @@
+name: ZenPacks.crosse.OpenBSD
+
+classes:
+    OpenBSDDevice:
+        base: [zenpacklib.Device]
+        label: OpenBSD
+
+device_classes:
+    /Server/OpenBSD:
+        zProperties:
+            zPythonClass: ZenPacks.crosse.OpenBSD.OpenBSDDevice
+            zCollectorPlugins:
+                - crosse.snmp.OpenBSD
+                - zenoss.snmp.NewDeviceMap
+                - zenoss.snmp.DeviceMap
+                - zenoss.snmp.InterfaceMap
+                - zenoss.snmp.RouteMap
+                - zenoss.snmp.IpServiceMap
+                - zenoss.snmp.HRFileSystemMap
+                - zenoss.snmp.CpuMap
+                - zenoss.snmp.SnmpV3EngineIdMap
