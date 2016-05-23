@@ -5,12 +5,141 @@ classes:
         base: [zenpacklib.Device]
         label: OpenBSD
 
+    PacketFilter:
+        base: [zenpacklib.Component]
+        label: Packet Filter
+        properties:
+            pfHostId:
+                label: Host ID
+                order: 1
+            pfRunning:
+                label: "Running"
+                type: bool
+                order: 2
+            pfDebug:
+                label: Debug Level
+                type: int
+                enum: {0: "Emergency", 1: "Alert", 2: "Critical", 3: "Error", 4: "Warning", 5: "Notice", 6: "Info", 7: "Debug"}
+                order: 3
+            pfRuntime:
+                label: "Runtime"
+                order: 4
+            pfCntMatch:
+                label: Matches
+                grid_display: false
+                type: int
+                order: 5
+            pfCntBadOffset:
+                label: Bad Offsets
+                grid_display: false
+                type: int
+                order: 6
+            pfCntFragment:
+                label: Fragments
+                grid_display: false
+                type: int
+                order: 7
+            pfCntShort:
+                label: Short Packets
+                grid_display: false
+                type: int
+                order: 8
+            pfCntNormalize:
+                label: Normalized Packets
+                grid_display: false
+                type: int
+                order: 9
+            pfCntMemory:
+                label: Dropped - Memory Pressure
+                grid_display: false
+                type: int
+                order: 11
+            pfCntTimestamp:
+                label: Dropped - Improper Timestamp
+                grid_display: false
+                type: int
+                order: 12
+            pfCntCongestion:
+                label: Dropped - Congestion
+                grid_display: false
+                type: int
+                order: 13
+            pfCntIpOption:
+                label: Dropped - IP Options
+                grid_display: false
+                type: int
+                order: 14
+            pfCntProtoCksum:
+                label: Dropped - Checksum
+                grid_display: false
+                type: int
+                order: 15
+            pfCntStateMismatch:
+                label: Dropped - State Mismatch
+                grid_display: false
+                type: int
+                order: 16
+            pfCntStateInsert:
+                label: Dropped - State Insert Error
+                grid_display: false
+                type: int
+                order: 17
+            pfCntStateLimit:
+                label: Dropped - State Limit
+                grid_display: false
+                type: int
+                order: 18
+            pfCntSrcLimit:
+                label: Dropped - Source Limit
+                grid_display: false
+                type: int
+                order: 19
+            pfCntSynproxy:
+                label: Dropped - Synproxy
+                grid_display: false
+                type: int
+                order: 20
+            pfCntTranslate:
+                label: Dropped - NAT
+                grid_display: false
+                type: int
+                order: 21
+            pfCntNoRoute:
+                label: Dropped - No Route
+                grid_display: false
+                type: int
+                order: 22
+            pfStateCount:
+                label: State Count
+                grid_display: false
+                type: int
+                order: 23
+            pfStateSearches:
+                label: State Searches
+                grid_display: false
+                type: int
+                order: 25
+            pfStateInserts:
+                label: State Inserts
+                grid_display: false
+                type: int
+                order: 25
+            pfStateRemovals:
+                label: State Removals
+                grid_display: false
+                type: int
+                order: 26
+
+class_relationships:
+    - OpenBSDDevice 1:MC PacketFilter
+
 device_classes:
     /Server/OpenBSD:
         zProperties:
             zPythonClass: ZenPacks.crosse.OpenBSD.OpenBSDDevice
+            zInterfaceMapIgnoreNames: "^pflog.*"
             zCollectorPlugins:
-                - crosse.snmp.OpenBSD
+                - crosse.snmp.OpenBSD.PacketFilter
                 - zenoss.snmp.NewDeviceMap
                 - zenoss.snmp.DeviceMap
                 - zenoss.snmp.InterfaceMap
@@ -19,3 +148,239 @@ device_classes:
                 - zenoss.snmp.HRFileSystemMap
                 - zenoss.snmp.CpuMap
                 - zenoss.snmp.SnmpV3EngineIdMap
+
+        templates:
+            PacketFilter:
+                targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilter
+                description: PF monitoring for OpenBSD devices.
+
+                datasources:
+                    pfRunning:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.1.1.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfRunning:
+                                rrdtype: GAUGE
+                    pfRuntime:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.1.2.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfRuntime:
+                                rrdtype: GAUGE
+                    pfDebug:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.1.3.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfDebug:
+                                rrdtype: GAUGE
+                    pfCntMatch:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.1.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntMatch:
+                                rrdtype: DERIVE
+                    pfCntBadOffset:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.2.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntBadOffset:
+                                rrdtype: DERIVE
+                    pfCntFragment:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.3.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntFragment:
+                                rrdtype: DERIVE
+                    pfCntShort:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.4.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntShort:
+                                rrdtype: DERIVE
+                    pfCntNormalize:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.5.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntNormalize:
+                                rrdtype: DERIVE
+                    pfCntMemory:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.6.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntMemory:
+                                rrdtype: DERIVE
+                    pfCntTimestamp:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.7.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntTimestamp:
+                                rrdtype: DERIVE
+                    pfCntCongestion:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.8.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntCongestion:
+                                rrdtype: DERIVE
+                    pfCntIpOption:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.9.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntIpOption:
+                                rrdtype: DERIVE
+                    pfCntProtoCksum:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.10.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntProtoCksum:
+                                rrdtype: DERIVE
+                    pfCntStateMismatch:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.11.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntStateMismatch:
+                                rrdtype: DERIVE
+                    pfCntStateInsert:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.12.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntStateInsert:
+                                rrdtype: DERIVE
+                    pfCntStateLimit:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.13.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntStateLimit:
+                                rrdtype: DERIVE
+                    pfCntSrcLimit:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.14.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntSrcLimit:
+                                rrdtype: DERIVE
+                    pfCntSynproxy:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.15.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntSynproxy:
+                                rrdtype: DERIVE
+                    pfCntTranslate:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.16.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntTranslate:
+                                rrdtype: DERIVE
+                    pfCntNoRoute:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.2.17.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfCntNoRoute:
+                                rrdtype: DERIVE
+                    pfStateCount:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.3.1.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfStateCount:
+                                rrdtype: GAUGE
+                    pfStateSearches:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.3.2.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfStateSearches:
+                                rrdtype: DERIVE
+                    pfStateInserts:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.3.3.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfStateInserts:
+                                rrdtype: DERIVE
+                    pfStateRemovals:
+                        type: SNMP
+                        oid: 1.3.6.1.4.1.30155.1.3.4.0
+                        component: "${here/id}"
+                        datapoints:
+                            pfStateRemovals:
+                                rrdtype: DERIVE
+
+                graphs:
+                    "States":
+                        units: "states"
+                        graphpoints:
+                            States:
+                                dpName: pfStateCount_pfStateCount
+                                format: "%8.2lf"
+
+                    "State Operations":
+                        units: "ops/sec"
+                        graphpoints:
+                            Searches:
+                                dpName: pfStateSearches_pfStateSearches
+                                format: "%8.2lf"
+                            Inserts:
+                                dpName: pfStateInserts_pfStateInserts
+                                format: "%8.2lf"
+                            Removals:
+                                dpName: pfStateRemovals_pfStateRemovals
+                                format: "%8.2lf"
+
+                    "Dropped Packets":
+                        units: "packets/sec"
+                        graphpoints:
+                            "Memory Limits":
+                                dpName: pfCntMemory_pfCntMemory
+                                format: "%5.2lf"
+                            "Bad Timestamp":
+                                dpName: pfCntTimestamp_pfCntTimestamp
+                                format: "%5.2lf"
+                            "Congestion":
+                                dpName: pfCntCongestion_pfCntCongestion
+                                format: "%5.2lf"
+                            "IP Options":
+                                dpName: pfCntIpOption_pfCntIpOption
+                                format: "%5.2lf"
+                            "Bad Checksum":
+                                dpName: pfCntProtoCksum_pfCntProtoCksum
+                                format: "%5.2lf"
+                            "State Mismatch":
+                                dpName: pfCntStateMismatch_pfCntStateMismatch
+                                format: "%5.2lf"
+                            "State Insert Error":
+                                dpName: pfCntStateInsert_pfCntStateInsert
+                                format: "%5.2lf"
+                            "Per-Rule State Limit":
+                                dpName: pfCntStateLimit_pfCntStateLimit
+                                format: "%5.2lf"
+                            "Per-Source State Limit":
+                                dpName: pfCntSrcLimit_pfCntSrcLimit
+                                format: "%5.2lf"
+                            "Synproxy":
+                                dpName: pfCntSynproxy_pfCntSynproxy
+                                format: "%5.2lf"
+                            "NAT - No Unused Port":
+                                dpName: pfCntTranslate_pfCntTranslate
+                                format: "%5.2lf"
+                            "No Route":
+                                dpName: pfCntNoRoute_pfCntNoRoute
+                                format: "%5.2lf"
