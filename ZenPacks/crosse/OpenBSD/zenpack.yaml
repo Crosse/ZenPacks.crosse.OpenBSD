@@ -1,5 +1,13 @@
 name: ZenPacks.crosse.OpenBSD
 
+zProperties:
+    DEFAULTS:
+        category: OpenBSD
+        type: boolean
+
+    zPfIgnoreLabels: {}
+    zPfIgnoreTables: {}
+
 classes:
     OpenBSDDevice:
         base: [zenpacklib.Device]
