@@ -13,8 +13,9 @@ classes:
                 label: Host ID
                 order: 1
             pfRunning:
-                label: "Running"
+                label: Running
                 type: bool
+                renderer: Zenoss.render.checkbox
                 order: 2
             pfDebug:
                 label: Debug Level
@@ -22,108 +23,109 @@ classes:
                 enum: {0: "Emergency", 1: "Alert", 2: "Critical", 3: "Error", 4: "Warning", 5: "Notice", 6: "Info", 7: "Debug"}
                 order: 3
             pfRuntime:
-                label: "Runtime"
+                label: Runtime
+                type: int
                 order: 4
             pfCntMatch:
                 label: Matches
-                grid_display: false
                 type: int
-                order: 5
+                details_display: false
+                grid_display: false
             pfCntBadOffset:
                 label: Bad Offsets
-                grid_display: false
                 type: int
-                order: 6
+                details_display: false
+                grid_display: false
             pfCntFragment:
                 label: Fragments
-                grid_display: false
                 type: int
-                order: 7
+                details_display: false
+                grid_display: false
             pfCntShort:
                 label: Short Packets
-                grid_display: false
                 type: int
-                order: 8
+                details_display: false
+                grid_display: false
             pfCntNormalize:
                 label: Normalized Packets
-                grid_display: false
                 type: int
-                order: 9
+                details_display: false
+                grid_display: false
             pfCntMemory:
                 label: Dropped - Memory Pressure
-                grid_display: false
                 type: int
-                order: 11
+                details_display: false
+                grid_display: false
             pfCntTimestamp:
                 label: Dropped - Improper Timestamp
-                grid_display: false
                 type: int
-                order: 12
+                details_display: false
+                grid_display: false
             pfCntCongestion:
                 label: Dropped - Congestion
-                grid_display: false
                 type: int
-                order: 13
+                details_display: false
+                grid_display: false
             pfCntIpOption:
                 label: Dropped - IP Options
-                grid_display: false
                 type: int
-                order: 14
+                details_display: false
+                grid_display: false
             pfCntProtoCksum:
                 label: Dropped - Checksum
-                grid_display: false
                 type: int
-                order: 15
+                details_display: false
+                grid_display: false
             pfCntStateMismatch:
                 label: Dropped - State Mismatch
-                grid_display: false
                 type: int
-                order: 16
+                details_display: false
+                grid_display: false
             pfCntStateInsert:
                 label: Dropped - State Insert Error
-                grid_display: false
                 type: int
-                order: 17
+                details_display: false
+                grid_display: false
             pfCntStateLimit:
                 label: Dropped - State Limit
-                grid_display: false
                 type: int
-                order: 18
+                details_display: false
+                grid_display: false
             pfCntSrcLimit:
                 label: Dropped - Source Limit
-                grid_display: false
                 type: int
-                order: 19
+                details_display: false
+                grid_display: false
             pfCntSynproxy:
                 label: Dropped - Synproxy
-                grid_display: false
                 type: int
-                order: 20
+                details_display: false
+                grid_display: false
             pfCntTranslate:
                 label: Dropped - NAT
-                grid_display: false
                 type: int
-                order: 21
+                details_display: false
+                grid_display: false
             pfCntNoRoute:
                 label: Dropped - No Route
-                grid_display: false
                 type: int
-                order: 22
+                details_display: false
+                grid_display: false
             pfStateCount:
                 label: State Count
-                grid_display: false
                 type: int
-                order: 23
+                details_display: false
+                grid_display: false
             pfStateSearches:
                 label: State Searches
-                grid_display: false
                 type: int
-                order: 25
+                details_display: false
+                grid_display: false
             pfStateInserts:
                 label: State Inserts
-                grid_display: false
                 type: int
-                order: 25
+                details_display: false
+                grid_display: false
             pfStateRemovals:
                 label: State Removals
                 grid_display: false
