@@ -34,6 +34,19 @@ class PacketFilter(SnmpPlugin):
                 '.1.3.6.1.4.1.30155.1.3.2.0': 'pfStateSearches',
                 '.1.3.6.1.4.1.30155.1.3.3.0': 'pfStateInserts',
                 '.1.3.6.1.4.1.30155.1.3.4.0': 'pfStateRemovals',
+                '.1.3.6.1.4.1.30155.1.4.1.0': 'pfLogIfName',
+                '.1.3.6.1.4.1.30155.1.4.2.0': 'pfLogIfIpBytesIn',
+                '.1.3.6.1.4.1.30155.1.4.3.0': 'pfLogIfIpBytesOut',
+                '.1.3.6.1.4.1.30155.1.4.4.0': 'pfLogIfIpPktsInPass',
+                '.1.3.6.1.4.1.30155.1.4.5.0': 'pfLogIfIpPktsInDrop',
+                '.1.3.6.1.4.1.30155.1.4.6.0': 'pfLogIfIpPktsOutPass',
+                '.1.3.6.1.4.1.30155.1.4.7.0': 'pfLogIfIpPktsOutDrop',
+                '.1.3.6.1.4.1.30155.1.4.8.0': 'pfLogIfIp6BytesIn',
+                '.1.3.6.1.4.1.30155.1.4.9.0': 'pfLogIfIp6BytesOut',
+                '.1.3.6.1.4.1.30155.1.4.10.0': 'pfLogIfIp6PktsInPass',
+                '.1.3.6.1.4.1.30155.1.4.11.0': 'pfLogIfIp6PktsInDrop',
+                '.1.3.6.1.4.1.30155.1.4.12.0': 'pfLogIfIp6PktsOutPass',
+                '.1.3.6.1.4.1.30155.1.4.13.0': 'pfLogIfIp6PktsOutDrop',
                 })
             )
 

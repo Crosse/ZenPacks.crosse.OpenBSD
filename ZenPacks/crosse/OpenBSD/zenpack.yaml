@@ -130,6 +130,73 @@ classes:
             pfStateRemovals:
                 label: State Removals
                 grid_display: false
+            pfLogIfName:
+                label: Log Interface
+                order: 5
+            pfLogIfIpBytesIn:
+                label: Log Interface - IPv4 Bytes In
+                type: int
+                renderer: Zenoss.render.bytesString
+                details_display: false
+                grid_display: false
+            pfLogIfIpBytesOut:
+                label: Log Interface - IPv4 Bytes Out
+                type: int
+                renderer: Zenoss.render.bytesString
+                details_display: false
+                grid_display: false
+            pfLogIfIpPktsInPass:
+                label: Log Interface - IPv4 Packets In (Pass)
+                type: int
+                details_display: false
+                grid_display: false
+            pfLogIfIpPktsInDrop:
+                label: Log Interface - IPv4 Packets In (Drop)
+                type: int
+                details_display: false
+                grid_display: false
+            pfLogIfIpPktsOutPass:
+                label: Log Interface - IPv4 Packets Out (Pass)
+                type: int
+                details_display: false
+                grid_display: false
+            pfLogIfIpPktsOutDrop:
+                label: Log Interface - IPv4 Packets Out (Drop)
+                type: int
+                details_display: false
+                grid_display: false
+            pfLogIfIp6BytesIn:
+                label: Log Interface - IPv6 Bytes In
+                type: int
+                renderer: Zenoss.render.bytesString
+                details_display: false
+                grid_display: false
+            pfLogIfIp6BytesOut:
+                label: Log Interface - IPv6 Bytes Out
+                type: int
+                renderer: Zenoss.render.bytesString
+                details_display: false
+                grid_display: false
+            pfLogIfIp6PktsInPass:
+                label: Log Interface - IPv6 Packets In (Pass)
+                type: int
+                details_display: false
+                grid_display: false
+            pfLogIfIp6PktsInDrop:
+                label: Log Interface - IPv6 Packets In (Drop)
+                type: int
+                details_display: false
+                grid_display: false
+            pfLogIfIp6PktsOutPass:
+                label: Log Interface - IPv6 Packets Out (Pass)
+                type: int
+                details_display: false
+                grid_display: false
+            pfLogIfIp6PktsOutDrop:
+                label: Log Interface - IPv6 Packets Out (Drop)
+                type: int
+                details_display: false
+                grid_display: false
                 type: int
                 order: 26
 
@@ -326,6 +393,97 @@ device_classes:
                         datapoints:
                             pfStateRemovals:
                                 rrdtype: DERIVE
+                    pfLogIfName:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.1.0
+                        datapoints:
+                            pfLogIfName:
+                                rrdtype: DERIVE
+                    pfLogIfIpBytesIn:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.2.0
+                        datapoints:
+                            pfLogIfIpBytesIn:
+                                rrdtype: DERIVE
+                    pfLogIfIpBytesOut:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.3.0
+                        datapoints:
+                            pfLogIfIpBytesOut:
+                                rrdtype: DERIVE
+                    pfLogIfIpPktsInPass:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.4.0
+                        datapoints:
+                            pfLogIfIpPktsInPass:
+                                rrdtype: DERIVE
+                    pfLogIfIpPktsInDrop:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.5.0
+                        datapoints:
+                            pfLogIfIpPktsInDrop:
+                                rrdtype: DERIVE
+                    pfLogIfIpPktsOutPass:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.6.0
+                        datapoints:
+                            pfLogIfIpPktsOutPass:
+                                rrdtype: DERIVE
+                    pfLogIfIpPktsOutDrop:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.7.0
+                        datapoints:
+                            pfLogIfIpPktsOutDrop:
+                                rrdtype: DERIVE
+                    pfLogIfIp6BytesIn:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.8.0
+                        datapoints:
+                            pfLogIfIp6BytesIn:
+                                rrdtype: DERIVE
+                    pfLogIfIp6BytesOut:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.9.0
+                        datapoints:
+                            pfLogIfIp6BytesOut:
+                                rrdtype: DERIVE
+                    pfLogIfIp6PktsInPass:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.10.0
+                        datapoints:
+                            pfLogIfIp6PktsInPass:
+                                rrdtype: DERIVE
+                    pfLogIfIp6PktsInDrop:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.11.0
+                        datapoints:
+                            pfLogIfIp6PktsInDrop:
+                                rrdtype: DERIVE
+                    pfLogIfIp6PktsOutPass:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.12.0
+                        datapoints:
+                            pfLogIfIp6PktsOutPass:
+                                rrdtype: DERIVE
+                    pfLogIfIp6PktsOutDrop:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.4.13.0
+                        datapoints:
+                            pfLogIfIp6PktsOutDrop:
+                                rrdtype: DERIVE
 
                 graphs:
                     "States":
@@ -387,3 +545,49 @@ device_classes:
                             "No Route":
                                 dpName: pfCntNoRoute_pfCntNoRoute
                                 format: "%5.2lf"
+
+                    Log Interface - Bytes:
+                        units: bytes
+                        graphpoints:
+                            "IPv4 In":
+                                dpName: pfLogIfIpBytesIn_pfLogIfIpBytesIn
+                                format: "%6.2lf%s"
+                            "IPv4 Out":
+                                dpName: pfLogIfIpBytesOut_pfLogIfIpBytesOut
+                                format: "%6.2lf%s"
+                            "IPv6 In":
+                                dpName: pfLogIfIp6BytesIn_pfLogIfIp6BytesIn
+                                format: "%6.2lf%s"
+                            "IPv6 Out":
+                                dpName: pfLogIfIp6BytesOut_pfLogIfIp6BytesOut
+                                format: "%6.2lf%s"
+
+                    "Log Interface - Packets":
+                        units: bytes
+                        graphpoints:
+                            "IPv4 Pkts In (Pass)":
+                                dpName: pfLogIfIpPktsInPass_pfLogIfIpPktsInPass
+                                format: "%6.2lf%s"
+                            "IPv4 Pkts In (Drop)":
+                                dpName: pfLogIfIpPktsInDrop_pfLogIfIpPktsInDrop
+                                format: "%6.2lf%s"
+                            "IPv4 Pkts Out (Pass)":
+                                dpName: pfLogIfIpPktsOutPass_pfLogIfIpPktsOutPass
+                                format: "%6.2lf%s"
+                            "IPv4 Pkts Out (Drop)":
+                                dpName: pfLogIfIpPktsOutDrop_pfLogIfIpPktsOutDrop
+                                format: "%6.2lf%s"
+                            "IPv6 Pkts In (Pass)":
+                                dpName: pfLogIfIp6PktsInPass_pfLogIfIp6PktsInPass
+                                format: "%6.2lf%s"
+                            "IPv6 Pkts In (Drop)":
+                                dpName: pfLogIfIp6PktsInDrop_pfLogIfIp6PktsInDrop
+                                format: "%6.2lf%s"
+                            "IPv6 Pkts Out (Pass)":
+                                dpName: pfLogIfIp6PktsOutPass_pfLogIfIp6PktsOutPass
+                                format: "%6.2lf%s"
+                            "IPv6 Pkts Out (Drop)":
+                                dpName: pfLogIfIp6PktsOutDrop_pfLogIfIp6PktsOutDrop
+                                format: "%6.2lf%s"
+
+
