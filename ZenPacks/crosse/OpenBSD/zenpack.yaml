@@ -8,6 +8,7 @@ classes:
     PacketFilter:
         base: [zenpacklib.Component]
         label: Packet Filter
+        plural_label: Packet Filter
         properties:
             pfHostId:
                 label: Host ID
