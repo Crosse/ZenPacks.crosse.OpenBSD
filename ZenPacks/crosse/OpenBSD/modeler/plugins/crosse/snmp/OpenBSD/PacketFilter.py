@@ -64,7 +64,8 @@ class PacketFilter(SnmpPlugin):
         for key in results[0].keys():
             values[key] = results[0].get(key)
 
-        values['id'] = 'Packet Filter'
+        values['id'] = self.prepId('pf')
+        values['title'] = 'Packet Filter'
         values['pfRunning'] = True if (values['pfRunning'] == 1) else False
 
         rm = self.relMap()
