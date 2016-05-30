@@ -13,6 +13,7 @@ class PacketFilter(SnmpPlugin):
                 '.1.3.6.1.4.1.30155.1.1.2.0': 'pfRuntime',
                 '.1.3.6.1.4.1.30155.1.1.3.0': 'pfDebug',
                 '.1.3.6.1.4.1.30155.1.1.4.0': 'pfHostId',
+
                 '.1.3.6.1.4.1.30155.1.2.1.0': 'pfCntMatch',
                 '.1.3.6.1.4.1.30155.1.2.2.0': 'pfCntBadOffset',
                 '.1.3.6.1.4.1.30155.1.2.3.0': 'pfCntFragment',
@@ -30,10 +31,12 @@ class PacketFilter(SnmpPlugin):
                 '.1.3.6.1.4.1.30155.1.2.15.0': 'pfCntSynproxy',
                 '.1.3.6.1.4.1.30155.1.2.16.0': 'pfCntTranslate',
                 '.1.3.6.1.4.1.30155.1.2.17.0': 'pfCntNoRoute',
+
                 '.1.3.6.1.4.1.30155.1.3.1.0': 'pfStateCount',
                 '.1.3.6.1.4.1.30155.1.3.2.0': 'pfStateSearches',
                 '.1.3.6.1.4.1.30155.1.3.3.0': 'pfStateInserts',
                 '.1.3.6.1.4.1.30155.1.3.4.0': 'pfStateRemovals',
+
                 '.1.3.6.1.4.1.30155.1.4.1.0': 'pfLogIfName',
                 '.1.3.6.1.4.1.30155.1.4.2.0': 'pfLogIfIpBytesIn',
                 '.1.3.6.1.4.1.30155.1.4.3.0': 'pfLogIfIpBytesOut',
@@ -47,6 +50,7 @@ class PacketFilter(SnmpPlugin):
                 '.1.3.6.1.4.1.30155.1.4.11.0': 'pfLogIfIp6PktsInDrop',
                 '.1.3.6.1.4.1.30155.1.4.12.0': 'pfLogIfIp6PktsOutPass',
                 '.1.3.6.1.4.1.30155.1.4.13.0': 'pfLogIfIp6PktsOutDrop',
+
                 '.1.3.6.1.4.1.30155.1.5.1.0': 'pfSrcTrackCount',
                 '.1.3.6.1.4.1.30155.1.5.2.0': 'pfSrcTrackSearches',
                 '.1.3.6.1.4.1.30155.1.5.3.0': 'pfSrcTrackInserts',
@@ -55,7 +59,6 @@ class PacketFilter(SnmpPlugin):
             )
 
     def process(self, device, results, log):
-        #import pdb; pdb.set_trace()
 
         values = {}
         for key in results[0].keys():
@@ -66,4 +69,5 @@ class PacketFilter(SnmpPlugin):
 
         rm = self.relMap()
         rm.append(self.objectMap(values))
+
         return rm
