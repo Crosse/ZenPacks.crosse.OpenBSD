@@ -47,6 +47,10 @@ class PacketFilter(SnmpPlugin):
                 '.1.3.6.1.4.1.30155.1.4.11.0': 'pfLogIfIp6PktsInDrop',
                 '.1.3.6.1.4.1.30155.1.4.12.0': 'pfLogIfIp6PktsOutPass',
                 '.1.3.6.1.4.1.30155.1.4.13.0': 'pfLogIfIp6PktsOutDrop',
+                '.1.3.6.1.4.1.30155.1.5.1.0': 'pfSrcTrackCount',
+                '.1.3.6.1.4.1.30155.1.5.2.0': 'pfSrcTrackSearches',
+                '.1.3.6.1.4.1.30155.1.5.3.0': 'pfSrcTrackInserts',
+                '.1.3.6.1.4.1.30155.1.5.4.0': 'pfSrcTrackRemovals',
                 })
             )
 

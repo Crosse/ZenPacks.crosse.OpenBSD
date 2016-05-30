@@ -197,6 +197,25 @@ classes:
                 type: int
                 details_display: false
                 grid_display: false
+            pfSrcTrackCount:
+                label: Source Tracking Entries
+                type: int
+                details_display: false
+                grid_display: false
+            pfSrcTrackSearches:
+                label: Source Tracking Searches
+                type: int
+                details_display: false
+                grid_display: false
+            pfSrcTrackInserts:
+                label: Source Tracking Inserts
+                type: int
+                details_display: false
+                grid_display: false
+            pfSrcTrackRemovals:
+                label: Source Tracking Removals
+                details_display: false
+                grid_display: false
                 type: int
                 order: 26
 
@@ -484,6 +503,34 @@ device_classes:
                         datapoints:
                             pfLogIfIp6PktsOutDrop:
                                 rrdtype: DERIVE
+                    pfSrcTrackCount:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.5.1.0
+                        datapoints:
+                            pfLogIfIp6PktsOutDrop:
+                                rrdtype: DERIVE
+                    pfSrcTrackSearches:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.5.2.0
+                        datapoints:
+                            pfSrcTrackSearches:
+                                rrdtype: DERIVE
+                    pfSrcTrackInserts:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.5.3.0
+                        datapoints:
+                            pfSrcTrackInserts:
+                                rrdtype: DERIVE
+                    pfSrcTrackRemovals:
+                        type: SNMP
+                        component: "${here/id}"
+                        oid: 1.3.6.1.4.1.30155.1.5.4.0
+                        datapoints:
+                            pfSrcTrackRemovals:
+                                rrdtype: DERIVE
 
                 graphs:
                     "States":
@@ -590,4 +637,23 @@ device_classes:
                                 dpName: pfLogIfIp6PktsOutDrop_pfLogIfIp6PktsOutDrop
                                 format: "%6.2lf%s"
 
+                    "Source Tracking Table - Entries":
+                        units: entries
+                        graphpoints:
+                            Entries:
+                                dpName: pfSrcTrackCount_pfSrcTrackCount
+                                format: "%6.2lf%s"
+
+                    "Source Tracking Table - Operations":
+                        units: ops/sec
+                        graphpoints:
+                            Searches:
+                                dpName: pfSrcTrackSearches_pfSrcTrackSearches
+                                format: "%6.2lf%s"
+                            Inserts:
+                                dpName: pfSrcTrackInserts_pfSrcTrackInserts
+                                format: "%6.2lf%s"
+                            Removals:
+                                dpName: pfSrcTrackRemovals_pfSrcTrackRemovals
+                                format: "%6.2lf%s"
 
