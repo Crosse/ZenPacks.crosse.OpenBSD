@@ -56,5 +56,4 @@ class PacketFilterInterface(SnmpPlugin):
 
             rm.append(self.objectMap(values))
 
-        #import pdb; pdb.set_trace()
         return rm
