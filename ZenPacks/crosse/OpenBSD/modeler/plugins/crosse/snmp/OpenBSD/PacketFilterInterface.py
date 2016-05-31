@@ -7,6 +7,9 @@ class PacketFilterInterface(SnmpPlugin):
     relname = 'packetFilterInterfaces'
     modname = 'ZenPacks.crosse.OpenBSD.PacketFilterInterface'
 
+    deviceProperties = SnmpPlugin.deviceProperties + (
+            'zPfInterfaceMonitorIgnore',
+            )
 
     snmpGetTableMaps = (
             GetTableMap(
@@ -35,6 +38,14 @@ class PacketFilterInterface(SnmpPlugin):
                     }
                 ),
             )
+
+    def condition(self, device, log):
+        shouldIgnore = getattr(device, 'zPfInterfaceMonitorIgnore', False)
+        if shouldIgnore:
+            log.info('Modeler %s not modeling PF interfaces for device %s (zPfInterfaceMonitorIgnore is true)',
+                    self.name(), device.id)
+        return not shouldIgnore
+
 
     def process(self, device, results, log):
 
