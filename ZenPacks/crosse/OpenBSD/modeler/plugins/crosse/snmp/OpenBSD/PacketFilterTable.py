@@ -8,7 +8,7 @@ class PacketFilterTable(SnmpPlugin):
     modname = 'ZenPacks.crosse.OpenBSD.PacketFilterTable'
 
     deviceProperties = SnmpPlugin.deviceProperties + (
-            'zPfIgnoreTables',
+            'zPfTableMonitorIgnore',
             )
 
     snmpGetTableMaps = (
@@ -44,9 +44,9 @@ class PacketFilterTable(SnmpPlugin):
 
 
     def condition(self, device, log):
-        shouldIgnore = getattr(device, 'zPfIgnoreTables', False)
+        shouldIgnore = getattr(device, 'zPfTableMonitorIgnore', False)
         if shouldIgnore:
-            log.info('Modeler %s not modeling PF tables for device %s (zPfIgnoreTables is true)',
+            log.info('Modeler %s not modeling PF tables for device %s (zPfTableMonitorIgnore is true)',
                     self.name(), device.id)
         return not shouldIgnore
 

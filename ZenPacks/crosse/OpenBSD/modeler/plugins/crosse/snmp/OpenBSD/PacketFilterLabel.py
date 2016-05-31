@@ -8,7 +8,7 @@ class PacketFilterLabel(SnmpPlugin):
     modname = 'ZenPacks.crosse.OpenBSD.PacketFilterLabel'
 
     deviceProperties = SnmpPlugin.deviceProperties + (
-            'zPfIgnoreLabels',
+            'zPfLabelMonitorIgnore',
             )
 
     snmpGetTableMaps = (
@@ -29,9 +29,9 @@ class PacketFilterLabel(SnmpPlugin):
 
 
     def condition(self, device, log):
-        shouldIgnore = getattr(device, 'zPfIgnoreLabels', False)
+        shouldIgnore = getattr(device, 'zPfLabelMonitorIgnore', False)
         if shouldIgnore:
-            log.info('Modeler %s not modeling PF labels for device %s (zPfIgnoreLabels is true)',
+            log.info('Modeler %s not modeling PF labels for device %s (zPfLabelMonitorIgnore is true)',
                     self.name(), device.id)
         return not shouldIgnore
 
