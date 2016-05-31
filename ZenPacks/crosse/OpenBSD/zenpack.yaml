@@ -146,8 +146,6 @@ classes:
                 enum: {0: "Group", 1: "Interface", 2: "Removed"}
                 order: 1
                 grid_display: true
-            pfIfIndex:
-                label: Index
             pfIfRefs:
                 label: State/Source Track References
                 short_label: State Refs
