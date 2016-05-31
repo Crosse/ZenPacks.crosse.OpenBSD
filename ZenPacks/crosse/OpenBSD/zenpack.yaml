@@ -347,288 +347,247 @@ device_classes:
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.1.1.0
                         datapoints:
-                            pfRunning:
-                                rrdtype: GAUGE
+                            pfRunning: GAUGE
                     pfRuntime:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.1.2.0
                         datapoints:
-                            pfRuntime:
-                                rrdtype: GAUGE
+                            pfRuntime: GAUGE
                     pfDebug:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.1.3.0
                         datapoints:
-                            pfDebug:
-                                rrdtype: GAUGE
+                            pfDebug: GAUGE
                     pfCntMatch:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.1.0
                         datapoints:
-                            pfCntMatch:
-                                rrdtype: DERIVE
+                            pfCntMatch: DERIVE
                     pfCntBadOffset:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.2.0
                         datapoints:
-                            pfCntBadOffset:
-                                rrdtype: DERIVE
+                            pfCntBadOffset: DERIVE
                     pfCntFragment:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.3.0
                         datapoints:
-                            pfCntFragment:
-                                rrdtype: DERIVE
+                            pfCntFragment: DERIVE
                     pfCntShort:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.4.0
                         datapoints:
-                            pfCntShort:
-                                rrdtype: DERIVE
+                            pfCntShort: DERIVE
                     pfCntNormalize:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.5.0
                         datapoints:
-                            pfCntNormalize:
-                                rrdtype: DERIVE
+                            pfCntNormalize: DERIVE
                     pfCntMemory:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.6.0
                         datapoints:
-                            pfCntMemory:
-                                rrdtype: DERIVE
+                            pfCntMemory: DERIVE
                     pfCntTimestamp:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.7.0
                         datapoints:
-                            pfCntTimestamp:
-                                rrdtype: DERIVE
+                            pfCntTimestamp: DERIVE
                     pfCntCongestion:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.8.0
                         datapoints:
-                            pfCntCongestion:
-                                rrdtype: DERIVE
+                            pfCntCongestion: DERIVE
                     pfCntIpOption:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.9.0
                         datapoints:
-                            pfCntIpOption:
-                                rrdtype: DERIVE
+                            pfCntIpOption: DERIVE
                     pfCntProtoCksum:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.10.0
                         datapoints:
-                            pfCntProtoCksum:
-                                rrdtype: DERIVE
+                            pfCntProtoCksum: DERIVE
                     pfCntStateMismatch:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.11.0
                         datapoints:
-                            pfCntStateMismatch:
-                                rrdtype: DERIVE
+                            pfCntStateMismatch: DERIVE
                     pfCntStateInsert:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.12.0
                         datapoints:
-                            pfCntStateInsert:
-                                rrdtype: DERIVE
+                            pfCntStateInsert: DERIVE
                     pfCntStateLimit:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.13.0
                         datapoints:
-                            pfCntStateLimit:
-                                rrdtype: DERIVE
+                            pfCntStateLimit: DERIVE
                     pfCntSrcLimit:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.14.0
                         datapoints:
-                            pfCntSrcLimit:
-                                rrdtype: DERIVE
+                            pfCntSrcLimit: DERIVE
                     pfCntSynproxy:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.15.0
                         datapoints:
-                            pfCntSynproxy:
-                                rrdtype: DERIVE
+                            pfCntSynproxy: DERIVE
                     pfCntTranslate:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.16.0
                         datapoints:
-                            pfCntTranslate:
-                                rrdtype: DERIVE
+                            pfCntTranslate: DERIVE
                     pfCntNoRoute:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.2.17.0
                         datapoints:
-                            pfCntNoRoute:
-                                rrdtype: DERIVE
+                            pfCntNoRoute: DERIVE
                     pfStateCount:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.3.1.0
                         datapoints:
-                            pfStateCount:
-                                rrdtype: GAUGE
+                            pfStateCount: GAUGE
                     pfStateSearches:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.3.2.0
                         datapoints:
-                            pfStateSearches:
-                                rrdtype: DERIVE
+                            pfStateSearches: DERIVE
                     pfStateInserts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.3.3.0
                         datapoints:
-                            pfStateInserts:
-                                rrdtype: DERIVE
+                            pfStateInserts: DERIVE
                     pfStateRemovals:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.3.4.0
                         datapoints:
-                            pfStateRemovals:
-                                rrdtype: DERIVE
+                            pfStateRemovals: DERIVE
                     pfLogIfName:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.1.0
                         datapoints:
-                            pfLogIfName:
-                                rrdtype: DERIVE
+                            pfLogIfName: DERIVE
                     pfLogIfIpBytesIn:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.2.0
                         datapoints:
-                            pfLogIfIpBytesIn:
-                                rrdtype: DERIVE
+                            pfLogIfIpBytesIn: DERIVE
                     pfLogIfIpBytesOut:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.3.0
                         datapoints:
-                            pfLogIfIpBytesOut:
-                                rrdtype: DERIVE
+                            pfLogIfIpBytesOut: DERIVE
                     pfLogIfIpPktsInPass:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.4.0
                         datapoints:
-                            pfLogIfIpPktsInPass:
-                                rrdtype: DERIVE
+                            pfLogIfIpPktsInPass: DERIVE
                     pfLogIfIpPktsInDrop:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.5.0
                         datapoints:
-                            pfLogIfIpPktsInDrop:
-                                rrdtype: DERIVE
+                            pfLogIfIpPktsInDrop: DERIVE
                     pfLogIfIpPktsOutPass:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.6.0
                         datapoints:
-                            pfLogIfIpPktsOutPass:
-                                rrdtype: DERIVE
+                            pfLogIfIpPktsOutPass: DERIVE
                     pfLogIfIpPktsOutDrop:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.7.0
                         datapoints:
-                            pfLogIfIpPktsOutDrop:
-                                rrdtype: DERIVE
+                            pfLogIfIpPktsOutDrop: DERIVE
                     pfLogIfIp6BytesIn:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.8.0
                         datapoints:
-                            pfLogIfIp6BytesIn:
-                                rrdtype: DERIVE
+                            pfLogIfIp6BytesIn: DERIVE
                     pfLogIfIp6BytesOut:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.9.0
                         datapoints:
-                            pfLogIfIp6BytesOut:
-                                rrdtype: DERIVE
+                            pfLogIfIp6BytesOut: DERIVE
                     pfLogIfIp6PktsInPass:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.10.0
                         datapoints:
-                            pfLogIfIp6PktsInPass:
-                                rrdtype: DERIVE
+                            pfLogIfIp6PktsInPass: DERIVE
                     pfLogIfIp6PktsInDrop:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.11.0
                         datapoints:
-                            pfLogIfIp6PktsInDrop:
-                                rrdtype: DERIVE
+                            pfLogIfIp6PktsInDrop: DERIVE
                     pfLogIfIp6PktsOutPass:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.12.0
                         datapoints:
-                            pfLogIfIp6PktsOutPass:
-                                rrdtype: DERIVE
+                            pfLogIfIp6PktsOutPass: DERIVE
                     pfLogIfIp6PktsOutDrop:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.13.0
                         datapoints:
-                            pfLogIfIp6PktsOutDrop:
-                                rrdtype: DERIVE
+                            pfLogIfIp6PktsOutDrop: DERIVE
                     pfSrcTrackCount:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.5.1.0
                         datapoints:
-                            pfLogIfIp6PktsOutDrop:
-                                rrdtype: DERIVE
+                            pfLogIfIp6PktsOutDrop: DERIVE
                     pfSrcTrackSearches:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.5.2.0
                         datapoints:
-                            pfSrcTrackSearches:
-                                rrdtype: DERIVE
+                            pfSrcTrackSearches: DERIVE
                     pfSrcTrackInserts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.5.3.0
                         datapoints:
-                            pfSrcTrackInserts:
-                                rrdtype: DERIVE
+                            pfSrcTrackInserts: DERIVE
                     pfSrcTrackRemovals:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.5.4.0
                         datapoints:
-                            pfSrcTrackRemovals:
-                                rrdtype: DERIVE
+                            pfSrcTrackRemovals: DERIVE
 
                 graphs:
                     States:
@@ -765,127 +724,109 @@ device_classes:
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.4
                         datapoints:
-                            pfIfRefs:
-                                rrdtype: GAUGE
+                            pfIfRefs: GAUGE
                     pfIfRules:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.5
                         datapoints:
-                            pfIfRules:
-                                rrdtype: GAUGE
+                            pfIfRules: GAUGE
                     pfIfIn4PassPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.6
                         datapoints:
-                            pfIfIn4PassPkts:
-                                rrdtype: DERIVE
+                            pfIfIn4PassPkts: DERIVE
                     pfIfIn4PassBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.7
                         datapoints:
-                            pfIfIn4PassBytes:
-                                rrdtype: DERIVE
+                            pfIfIn4PassBytes: DERIVE
                     pfIfIn4BlockPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.8
                         datapoints:
-                            pfIfIn4BlockPkts:
-                                rrdtype: DERIVE
+                            pfIfIn4BlockPkts: DERIVE
                     pfIfIn4BlockBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.9
                         datapoints:
-                            pfIfIn4BlockBytes:
-                                rrdtype: DERIVE
+                            pfIfIn4BlockBytes: DERIVE
                     pfIfOut4PassPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.10
                         datapoints:
-                            pfIfOut4PassPkts:
-                                rrdtype: DERIVE
+                            pfIfOut4PassPkts: DERIVE
                     pfIfOut4PassBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.11
                         datapoints:
-                            pfIfOut4PassBytes:
-                                rrdtype: DERIVE
+                            pfIfOut4PassBytes: DERIVE
                     pfIfOut4BlockPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.12
                         datapoints:
-                            pfIfOut4BlockPkts:
-                                rrdtype: DERIVE
+                            pfIfOut4BlockPkts: DERIVE
                     pfIfOut4BlockBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.13
                         datapoints:
-                            pfIfOut4BlockBytes:
-                                rrdtype: DERIVE
+                            pfIfOut4BlockBytes: DERIVE
                     pfIfIn6PassPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.14
                         datapoints:
-                            pfIfIn6PassPkts:
-                                rrdtype: DERIVE
+                            pfIfIn6PassPkts: DERIVE
                     pfIfIn6PassBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.15
                         datapoints:
-                            pfIfIn6PassBytes:
-                                rrdtype: DERIVE
+                            pfIfIn6PassBytes: DERIVE
                     pfIfIn6BlockPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.16
                         datapoints:
-                            pfIfIn6BlockPkts:
-                                rrdtype: DERIVE
+                            pfIfIn6BlockPkts: DERIVE
                     pfIfIn6BlockBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.17
                         datapoints:
-                            pfIfIn6BlockBytes:
-                                rrdtype: DERIVE
+                            pfIfIn6BlockBytes: DERIVE
                     pfIfOut6PassPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.17
                         datapoints:
-                            pfIfOut6PassPkts:
-                                rrdtype: DERIVE
+                            pfIfOut6PassPkts: DERIVE
                     pfIfOut6PassBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.19
                         datapoints:
-                            pfIfOut6PassBytes:
-                                rrdtype: DERIVE
+                            pfIfOut6PassBytes: DERIVE
                     pfIfOut6BlockPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.20
                         datapoints:
-                            pfIfOut6BlockPkts:
-                                rrdtype: DERIVE
+                            pfIfOut6BlockPkts: DERIVE
                     pfIfOut6BlockBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.8.128.1.21
                         datapoints:
-                            pfIfOut6BlockBytes:
-                                rrdtype: DERIVE
+                            pfIfOut6BlockBytes: DERIVE
 
                 graphs:
                     References:
