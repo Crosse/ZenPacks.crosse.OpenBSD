@@ -48,6 +48,8 @@ class PacketFilterInterface(SnmpPlugin):
 
 
     def process(self, device, results, log):
+        log.info('Modeler %s processing data for device %s',
+                self.name(), device.id)
 
         rm = self.relMap()
         for snmpindex, row in results[1].get('pfIfTable', {}).items():
