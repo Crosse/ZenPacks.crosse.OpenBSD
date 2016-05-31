@@ -15,6 +15,7 @@ zProperties:
     zPfTableMonitorIgnore: {}
     zPfLabelMonitorIgnore: {}
 
+
 classes:
     OpenBSDDevice:
         base: [zenpacklib.Device]
@@ -24,12 +25,15 @@ classes:
         base: [zenpacklib.Component]
         label: Packet Filter
         plural_label: Packet Filter
+        order: 10
+
         properties:
             DEFAULTS:
                 type: int
                 details_display: false
                 grid_display: false
 
+            # pfInfo
             pfHostId:
                 label: Host ID
                 type: string
@@ -43,93 +47,106 @@ classes:
                 order: 2
                 details_display: true
                 grid_display: true
+                datapoint: pfRunning_pfRunning
             pfDebug:
-                label: Debug Level
+                label: Logging Level
+                short_label: Log Level
                 enum: {0: "Emergency", 1: "Alert", 2: "Critical", 3: "Error", 4: "Warning", 5: "Notice", 6: "Info", 7: "Debug"}
                 order: 3
                 details_display: true
                 grid_display: true
+                datapoint: pfDebug_pfDebug
             pfRuntime:
                 label: Runtime
                 order: 4
                 details_display: true
                 grid_display: true
+                datapoint: pfRuntime_Runtime
+
+            # pfCounters
             pfCntMatch:
-                label: Matches
+                label: Matched Packets
             pfCntBadOffset:
-                label: Bad Offsets
+                label: Packets With Bad Offsets
             pfCntFragment:
-                label: Fragments
+                label: Packet Fragments
             pfCntShort:
                 label: Short Packets
             pfCntNormalize:
                 label: Normalized Packets
             pfCntMemory:
-                label: Dropped - Memory Pressure
+                label: Packets Dropped Due to Memory Pressure
             pfCntTimestamp:
-                label: Dropped - Improper Timestamp
+                label: Packets Dropped Due to Improper Timestamp
             pfCntCongestion:
-                label: Dropped - Congestion
+                label: Packets Dropped Due to Congestion
             pfCntIpOption:
-                label: Dropped - IP Options
+                label: Packets Dropped Due to IP Options
             pfCntProtoCksum:
-                label: Dropped - Checksum
+                label: Packets Dropped Due to Checksum
             pfCntStateMismatch:
-                label: Dropped - State Mismatch
+                label: Packets Dropped Due to State Mismatch
             pfCntStateInsert:
-                label: Dropped - State Insert Error
+                label: Packets Dropped Due to State Insert Error
             pfCntStateLimit:
-                label: Dropped - State Limit
+                label: Packets Dropped Due to State Limit
             pfCntSrcLimit:
-                label: Dropped - Source Limit
+                label: Packets Dropped Due to Source Limit
             pfCntSynproxy:
-                label: Dropped - Synproxy
+                label: Packets Dropped Due to Synproxy
             pfCntTranslate:
-                label: Dropped - NAT
+                label: Packets Dropped Due to NAT
             pfCntNoRoute:
-                label: Dropped - No Route
+                label: Packets Dropped Due to No Route
+
+            # pfStateTable
             pfStateCount:
-                label: State Count
+                label: State Table Entries
             pfStateSearches:
-                label: State Searches
+                label: State Table Searches
             pfStateInserts:
-                label: State Inserts
+                label: State Table Inserts
             pfStateRemovals:
-                label: State Removals
+                label: State Table Removals
+
+            # pfLogInterface
             pfLogIfName:
                 label: Log Interface
                 type: string
                 order: 5
                 details_display: true
                 grid_display: true
+                datapoint: pfLogIfName_pfLogIfName
             pfLogIfIpBytesIn:
-                label: Log Interface - IPv4 Bytes In
+                label: Log Interface - Incoming IPv4 Bytes
                 renderer: Zenoss.render.bytesString
             pfLogIfIpBytesOut:
-                label: Log Interface - IPv4 Bytes Out
+                label: Log Interface - Outgoing IPv4 Bytes
                 renderer: Zenoss.render.bytesString
             pfLogIfIpPktsInPass:
-                label: Log Interface - IPv4 Packets In (Pass)
+                label: Log Interface - Incoming IPv4 Packets Passed
             pfLogIfIpPktsInDrop:
-                label: Log Interface - IPv4 Packets In (Drop)
+                label: Log Interface - Incoming IPv4 Packets Dropped
             pfLogIfIpPktsOutPass:
-                label: Log Interface - IPv4 Packets Out (Pass)
+                label: Log Interface - Outgoing IPv4 Packets Passed
             pfLogIfIpPktsOutDrop:
-                label: Log Interface - IPv4 Packets Out (Drop)
+                label: Log Interface - Outgoing IPv4 Packets Dropped
             pfLogIfIp6BytesIn:
-                label: Log Interface - IPv6 Bytes In
+                label: Log Interface - Incoming IPv6 Bytes
                 renderer: Zenoss.render.bytesString
             pfLogIfIp6BytesOut:
-                label: Log Interface - IPv6 Bytes Out
+                label: Log Interface - Outgoing IPv6 Bytes
                 renderer: Zenoss.render.bytesString
             pfLogIfIp6PktsInPass:
-                label: Log Interface - IPv6 Packets In (Pass)
+                label: Log Interface - Incoming IPv6 Packets Passed
             pfLogIfIp6PktsInDrop:
-                label: Log Interface - IPv6 Packets In (Drop)
+                label: Log Interface - Incoming IPv6 Packets Dropped
             pfLogIfIp6PktsOutPass:
-                label: Log Interface - IPv6 Packets Out (Pass)
+                label: Log Interface - Outgoing IPv6 Packets Passed
             pfLogIfIp6PktsOutDrop:
-                label: Log Interface - IPv6 Packets Out (Drop)
+                label: Log Interface - Outgoing IPv6 Packets Dropped
+
+            # pfSrcTracking
             pfSrcTrackCount:
                 label: Source Tracking Entries
             pfSrcTrackSearches:
@@ -142,6 +159,7 @@ classes:
     PacketFilterInterface:
         base: [zenpacklib.Component]
         label: Packet Filter Interface
+        order: 11
 
         properties:
             DEFAULTS:
@@ -158,55 +176,58 @@ classes:
                 short_label: State Refs
                 order: 2
                 grid_display: true
+                datapoint: pfIfRefs_pfIfRefs
             pfIfRules:
                 label: Rule References
                 short_label: Rule Refs
                 order: 3
                 grid_display: true
+                datapoint: pfIfRules_pfIfRules
             pfIfIn4PassPkts:
-                label: IPv4 Incoming Packets Passed
+                label: Incoming IPv4 Packets Passed
             pfIfIn4PassBytes:
-                label: IPv4 Incoming Bytes Passed
+                label: Incoming IPv4 Bytes Passed
                 renderer: Zenoss.render.bytesString
             pfIfIn4BlockPkts:
-                label: IPv4 Incoming Packets Blocked
+                label: Incoming IPv4 Packets Blocked
             pfIfIn4BlockBytes:
-                label: IPv4 Incoming Bytes Blocked
+                label: Incoming IPv4 Bytes Blocked
                 renderer: Zenoss.render.bytesString
             pfIfOut4PassPkts:
-                label: IPv4 Outgoing Packets Passed
+                label: Outgoing IPv4 Packets Passed
             pfIfOut4PassBytes:
-                label: IPv4 Outgoing Bytes Passed
+                label: Outgoing IPv4 Bytes Passed
                 renderer: Zenoss.render.bytesString
             pfIfOut4BlockPkts:
-                label: IPv4 Outgoing Packets Blocked
+                label: Outgoing IPv4 Packets Blocked
             pfIfOut4BlockBytes:
-                label: IPv4 Outgoing Bytes Blocked
+                label: Outgoing IPv4 Bytes Blocked
                 renderer: Zenoss.render.bytesString
             pfIfIn6PassPkts:
-                label: IPv6 Incoming Packets Passed
+                label: Incoming IPv6 Packets Passed
             pfIfIn6PassBytes:
-                label: IPv6 Incoming Bytes Passed
+                label: Incoming IPv6 Bytes Passed
                 renderer: Zenoss.render.bytesString
             pfIfIn6BlockPkts:
-                label: IPv6 Incoming Packets Blocked
+                label: Incoming IPv6 Packets Blocked
             pfIfIn6BlockBytes:
-                label: IPv6 Incoming Bytes Blocked
+                label: Incoming IPv6 Bytes Blocked
                 renderer: Zenoss.render.bytesString
             pfIfOut6PassPkts:
-                label: IPv6 Outgoing Packets Passed
+                label: Outgoing IPv6 Packets Passed
             pfIfOut6PassBytes:
-                label: IPv6 Outgoing Bytes Passed
+                label: Outgoing IPv6 Bytes Passed
                 renderer: Zenoss.render.bytesString
             pfIfOut6BlockPkts:
-                label: IPv6 Outgoing Packets Blocked
+                label: Outgoing IPv6 Packets Blocked
             pfIfOut6BlockBytes:
-                label: IPv6 Outgoing Bytes Blocked
+                label: Outgoing IPv6 Bytes Blocked
                 renderer: Zenoss.render.bytesString
 
     PacketFilterTable:
         base: [zenpacklib.Component]
         label: Packet Filter Table
+        order: 12
 
         properties:
             DEFAULTS:
@@ -225,68 +246,72 @@ classes:
                 order: 2
                 details_display: true
                 grid_display: true
+                datapoint: pfTblAddresses_pfTblAddresses
             pfTblAnchorRefs:
                 label: Anchor References
                 short_label: Anchor Refs
                 order: 3
                 details_display: true
                 grid_display: true
+                datapoint: pfTblAnchorRefs_pfTblAnchorRefs
             pfTblRuleRefs:
                 label: Rule References
                 short_label: Rule Refs
                 order: 4
                 details_display: true
                 grid_display: true
+                datapoint: pfTblRuleRefs_pfTblRuleRefs
             pfTblEvalsMatch:
                 label: Table Evaluations (Matched)
             pfTblEvalsNoMatch:
                 label: Table Evaluations (Not Matched)
             pfTblInPassPkts:
-                label: Packets Passed In
+                label: Incoming Packets Passed
             pfTblInPassBytes:
-                label: Bytes Passed In
+                label: Incoming Bytes Passed
                 renderer: Zenoss.render.bytesString
             pfTblInBlockPkts:
-                label: Packets Blocked In
+                label: Incoming Packets Blocked
             pfTblInBlockBytes:
-                label: Bytes Blocked In
+                label: Incoming Bytes Blocked
                 renderer: Zenoss.render.bytesString
             pfTblInXPassPkts:
-                label: Packets Passed In (Address No Longer Listed)
+                label: Incoimng Packets Passed (Address No Longer Listed)
             pfTblInXPassBytes:
-                label: Bytes Passed In (Address No Longer Listed)
+                label: Incoming Bytes Passed (Address No Longer Listed)
                 renderer: Zenoss.render.bytesString
             pfTblOutPassPkts:
-                label: Packets Passed Out
+                label: Outgoing Packets Passed
             pfTblOutPassBytes:
-                label: Bytes Passed Out
+                label: Outgoing Bytes Passed
                 renderer: Zenoss.render.bytesString
             pfTblOutBlockPkts:
-                label: Packets Blocked Out
+                label: Outgoing Packets Blocked
             pfTblOutBlockBytes:
-                label: Bytes Blocked Out
+                label: Outgoing Bytes Blocked
                 renderer: Zenoss.render.bytesString
             pfTblOutXPassPkts:
-                label: Packets Passed Out (Address No Longer Listed)
+                label: Outgoing Packets Passed (Address No Longer Listed)
             pfTblOutXPassBytes:
-                label: Bytes Passed Out (Address No Longer Listed)
+                label: Outgoing Bytes Passed (Address No Longer Listed)
                 renderer: Zenoss.render.bytesString
             pfTblStatsCleared:
                 label: Stats Last Cleared
             pfTblInMatchPkts:
-                label: Packets Matched In
+                label: Incoming Packets Matched
             pfTblInMatchBytes:
-                label: Bytes Matched In
+                label: Incoming Bytes Matched
                 renderer: Zenoss.render.bytesString
             pfTblOutMatchPkts:
-                label: Packets Matched Out
+                label: Outgoing Packets Matched
             pfTblOutMatchBytes:
-                label: Bytes Matched Out
+                label: Outgoing Bytes Matched
                 renderer: Zenoss.render.bytesString
 
     PacketFilterLabel:
         base: [zenpacklib.Component]
         label: Packet Filter Label
+        order: 13
 
         properties:
             DEFAULTS:
@@ -295,27 +320,33 @@ classes:
 
             pfLabelEvals:
                 label: Rule Evaluations
+                datapoint: pfLabelEvals_pfLabelEvals
             pfLabelPkts:
                 label: Matched Packets
                 order: 1
                 grid_display: true
+                datapoint: pfLabelPkts_pfLabelPkts
             pfLabelBytes:
                 label: Matched Bytes
                 renderer: Zenoss.render.bytesString
                 order: 2
                 grid_display: true
+                datapoint: pfLabelBytes_pfLabelBytes
             pfLabelInPkts:
-                label: Matched Incoming Packets
+                label: Incoming Packets Matched
             pfLabelInBytes:
-                label: Matched Incoming Bytes
+                label: Incoming Bytes Matched
                 renderer: Zenoss.render.bytesString
             pfLabelOutPkts:
-                label: Matched Outgoing Packets
+                label: Outgoing Packets Matched
             pfLabelOutBytes:
-                label: Matched Outgoing Bytes
+                label: Outgoing Bytes Matched
                 renderer: Zenoss.render.bytesString
             pfLabelTotalStates:
                 label: Total States
+                order: 3
+                grid_display: true
+                datapoint: pfLabelTotalStates_pfLabelTotalStates
 
 
 class_relationships:
@@ -329,6 +360,7 @@ device_classes:
         zProperties:
             zPythonClass: ZenPacks.crosse.OpenBSD.OpenBSDDevice
             zInterfaceMapIgnoreNames: "^pflog.*"
+            zPfIgnoreInterfaces: "^pflog.*"
             zCollectorPlugins:
                 - crosse.snmp.OpenBSD.PacketFilter
                 - crosse.snmp.OpenBSD.PacketFilterInterface
@@ -498,7 +530,7 @@ device_classes:
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.4.1.0
                         datapoints:
-                            pfLogIfName: DERIVE
+                            pfLogIfName: GAUGE
                     pfLogIfIpBytesIn:
                         type: SNMP
                         component: "${here/id}"
@@ -576,7 +608,7 @@ device_classes:
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.5.1.0
                         datapoints:
-                            pfLogIfIp6PktsOutDrop: DERIVE
+                            pfLogIfIp6PktsOutDrop: GAUGE
                     pfSrcTrackSearches:
                         type: SNMP
                         component: "${here/id}"
@@ -657,58 +689,66 @@ device_classes:
                                 dpName: pfCntNoRoute_pfCntNoRoute
                                 format: "%6.2lf%s"
 
-                    Log Interface - Bytes:
+                    Log Interface - IPv4 Bytes:
                         units: bytes
                         graphpoints:
-                            "IPv4 In":
+                            Incoming:
                                 dpName: pfLogIfIpBytesIn_pfLogIfIpBytesIn
                                 format: "%6.2lf%s"
-                            "IPv4 Out":
+                            Outgoing:
                                 dpName: pfLogIfIpBytesOut_pfLogIfIpBytesOut
                                 format: "%6.2lf%s"
-                            "IPv6 In":
+
+                    Log Interface - IPv6 Bytes:
+                        units: bytes
+                        graphpoints:
+                            Incoming:
                                 dpName: pfLogIfIp6BytesIn_pfLogIfIp6BytesIn
                                 format: "%6.2lf%s"
-                            "IPv6 Out":
+                            Outgoing:
                                 dpName: pfLogIfIp6BytesOut_pfLogIfIp6BytesOut
                                 format: "%6.2lf%s"
 
-                    "Log Interface - Packets":
-                        units: bytes
+                    Log Interface - IPv4 Packets:
+                        units: packets
                         graphpoints:
-                            "IPv4 Pkts In (Pass)":
+                            Passed In:
                                 dpName: pfLogIfIpPktsInPass_pfLogIfIpPktsInPass
                                 format: "%6.2lf%s"
-                            "IPv4 Pkts In (Drop)":
+                            Dropped In:
                                 dpName: pfLogIfIpPktsInDrop_pfLogIfIpPktsInDrop
                                 format: "%6.2lf%s"
-                            "IPv4 Pkts Out (Pass)":
+                            Passed Out:
                                 dpName: pfLogIfIpPktsOutPass_pfLogIfIpPktsOutPass
                                 format: "%6.2lf%s"
-                            "IPv4 Pkts Out (Drop)":
+                            Dropped Out:
                                 dpName: pfLogIfIpPktsOutDrop_pfLogIfIpPktsOutDrop
                                 format: "%6.2lf%s"
-                            "IPv6 Pkts In (Pass)":
+
+                    Log Interface - IPv6 Packets:
+                        units: packets
+                        graphpoints:
+                            Passed In:
                                 dpName: pfLogIfIp6PktsInPass_pfLogIfIp6PktsInPass
                                 format: "%6.2lf%s"
-                            "IPv6 Pkts In (Drop)":
+                            Dropped In:
                                 dpName: pfLogIfIp6PktsInDrop_pfLogIfIp6PktsInDrop
                                 format: "%6.2lf%s"
-                            "IPv6 Pkts Out (Pass)":
+                            Passed Out:
                                 dpName: pfLogIfIp6PktsOutPass_pfLogIfIp6PktsOutPass
                                 format: "%6.2lf%s"
-                            "IPv6 Pkts Out (Drop)":
+                            Dropped Out:
                                 dpName: pfLogIfIp6PktsOutDrop_pfLogIfIp6PktsOutDrop
                                 format: "%6.2lf%s"
 
-                    "Source Tracking Table - Entries":
+                    Source Tracking Table Entries:
                         units: entries
                         graphpoints:
                             Entries:
                                 dpName: pfSrcTrackCount_pfSrcTrackCount
                                 format: "%6.2lf%s"
 
-                    "Source Tracking Table - Operations":
+                    Source Tracking Table Operations:
                         units: ops/sec
                         graphpoints:
                             Searches:
@@ -839,7 +879,7 @@ device_classes:
                     References:
                         units: references
                         graphpoints:
-                            State Refs:
+                            StateRefs:
                                 dpName: pfIfRefs_pfIfRefs
                                 format: "%6.2lf%s"
                             Rule Refs:
@@ -1021,7 +1061,7 @@ device_classes:
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.20
                         datapoints:
-                            pfTblStatsCleared: DERIVE
+                            pfTblStatsCleared: GAUGE
                     pfTblInMatchPkts:
                         type: SNMP
                         component: "${here/id}"
@@ -1048,13 +1088,14 @@ device_classes:
                             pfTblOutMatchBytes: DERIVE
 
                 graphs:
-                    Addresses:
+                    Addresses in Table:
                         units: addresses
                         graphpoints:
                             Addresses:
                                 dpName: pfTblAddresses_pfTblAddresses
                                 format: "%6.2lf%s"
-                    References:
+
+                    Table References:
                         units: references
                         graphpoints:
                             Anchor Refs:
@@ -1063,6 +1104,7 @@ device_classes:
                             Rule Refs:
                                 dpName: pfTblRuleRefs_pfTblRuleRefs
                                 format: "%6.2lf%s"
+
                     Evaluations:
                         units: evals/sec
                         graphpoints:
@@ -1070,65 +1112,59 @@ device_classes:
                                 dpName: pfTblEvalsMatch_pfTblEvalsMatch
                             Not Matched:
                                 dpName: pfTblEvalsNoMatch_pfTblEvalsNoMatch
-                    Packets - Passed:
+
+                    Packets:
                         units: packets/sec
                         graphpoints:
-                            In:
-                                dpName: pfTblInPassPkts_pfTblInPassPkts
-                                format: "%6.2lf%s"
-                            In (No Addr):
-                                dpName: pfTblInXPassPkts_pfTblInXPassPkts
-                                format: "%6.2lf%s"
-                            Out:
-                                dpName: pfTblOutPassPkts_pfTblOutPassPkts
-                                format: "%6.2lf%s"
-                    Packets - Blocked:
-                        units: packets/sec
-                        graphpoints:
-                            In:
-                                dpName: pfTblInBlockPkts_pfTblInBlockPkts
-                                format: "%6.2lf%s"
-                            Out:
-                                dpName: pfTblOutBlockPkts_pfTblOutBlockPkts
-                                format: "%6.2lf%s"
-                    Bytes - Passed:
-                        units: bytes/sec
-                        graphpoints:
-                            In:
-                                dpName: pfTblInPassBytes_pfTblInPassBytes
-                                format: "%6.2lf%s"
-                            In (No Addr):
-                                dpName: pfTblInXPassBytes_pfTblInXPassBytes
-                                format: "%6.2lf%s"
-                            Out:
-                                dpName: pfTblOutPassBytes_pfTblOutPassBytes
-                                format: "%6.2lf%s"
-                    Bytes - Blocked:
-                        units: bytes/sec
-                        graphpoints:
-                            In:
-                                dpName: pfTblInBlockBytes_pfTblInBlockBytes
-                                format: "%6.2lf%s"
-                            Out:
-                                dpName: pfTblOutBlockBytes_pfTblOutBlockBytes
-                                format: "%6.2lf%s"
-                    Packets - Matched:
-                        units: packets/sec
-                        graphpoints:
-                            Match In:
+                            Matched In:
                                 dpName: pfTblInMatchPkts_pfTblInMatchPkts
                                 format: "%6.2lf%s"
-                            Match Out:
+                            Matched Out:
                                 dpName: pfTblOutMatchPkts_pfTblOutMatchPkts
                                 format: "%6.2lf%s"
-                    Bytes - Matched:
+
+                            Passed In:
+                                dpName: pfTblInPassPkts_pfTblInPassPkts
+                                format: "%6.2lf%s"
+                            Passed In (No Addr):
+                                dpName: pfTblInXPassPkts_pfTblInXPassPkts
+                                format: "%6.2lf%s"
+                            Passed Out:
+                                dpName: pfTblOutPassPkts_pfTblOutPassPkts
+                                format: "%6.2lf%s"
+
+                            Blocked In:
+                                dpName: pfTblInBlockPkts_pfTblInBlockPkts
+                                format: "%6.2lf%s"
+                            Blocked Out:
+                                dpName: pfTblOutBlockPkts_pfTblOutBlockPkts
+                                format: "%6.2lf%s"
+
+                    Bytes:
                         units: bytes/sec
                         graphpoints:
-                            Match In:
+                            Matched In:
                                 dpName: pfTblInMatchBytes_pfTblInMatchBytes
                                 format: "%6.2lf%s"
-                            Match Out:
+                            Matched Out:
                                 dpName: pfTblOutMatchBytes_pfTblOutMatchBytes
+                                format: "%6.2lf%s"
+
+                            Passed In:
+                                dpName: pfTblInPassBytes_pfTblInPassBytes
+                                format: "%6.2lf%s"
+                            Passed In (No Addr):
+                                dpName: pfTblInXPassBytes_pfTblInXPassBytes
+                                format: "%6.2lf%s"
+                            Passed Out:
+                                dpName: pfTblOutPassBytes_pfTblOutPassBytes
+                                format: "%6.2lf%s"
+
+                            Blocked In:
+                                dpName: pfTblInBlockBytes_pfTblInBlockBytes
+                                format: "%6.2lf%s"
+                            Blocked Out:
+                                dpName: pfTblOutBlockBytes_pfTblOutBlockBytes
                                 format: "%6.2lf%s"
 
             PacketFilterLabel:
@@ -1186,37 +1222,39 @@ device_classes:
                                 pfLabelTotalStates: DERIVE
 
                 graphs:
-                    Evaluations:
+                    Rule Evaluations:
                         units: evals/sec
                         graphpoints:
                             Addresses:
                                 dpName: pfLabelEvals_pfLabelEvals
                                 format: "%6.2lf%s"
-                    States:
+                    States Created by Rule(s):
                         units: states
                         graphpoints:
                             Total States:
                                 dpName: pfLabelTotalStates_pfLabelTotalStates
                                 format: "%6.2lf%s"
+
                     Packets:
                         units: packets/sec
                         graphpoints:
-                            In:
+                            Incoming:
                                 dpName: pfLabelInPkts_pfLabelInPkts
                                 format: "%6.2lf%s"
-                            Out:
+                            Outgoing:
                                 dpName: pfLabelOutPkts_pfLabelOutPkts
                                 format: "%6.2lf%s"
                             Total:
                                 dpName: pfLabelPkts_pfLabelPkts
                                 format: "%6.2lf%s"
+
                     Bytes:
                         units: bytes/sec
                         graphpoints:
-                            In:
+                            Incoming:
                                 dpName: pfLabelInBytes_pfLabelInBytes
                                 format: "%6.2lf%s"
-                            Out:
+                            Outgoing:
                                 dpName: pfLabelOutBytes_pfLabelOutBytes
                                 format: "%6.2lf%s"
                             Total:
