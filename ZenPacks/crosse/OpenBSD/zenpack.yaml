@@ -971,155 +971,133 @@ device_classes:
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.3
                         datapoints:
-                            pfTblAddresses:
-                            rrdtype: GAUGE
+                            pfTblAddresses: GAUGE
                     pfTblAnchorRefs:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.4
                         datapoints:
-                            pfTblAnchorRefs:
-                            rrdtype: GAUGE
+                            pfTblAnchorRefs: GAUGE
                     pfTblRuleRefs:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.5
                         datapoints:
-                            pfTblRuleRefs:
-                            rrdtype: GAUGE
+                            pfTblRuleRefs: GAUGE
                     pfTblEvalsMatch:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.6
                         datapoints:
-                            pfTblEvalsMatch:
-                            rrdtype: DERIVE
+                            pfTblEvalsMatch: DERIVE
                     pfTblEvalsNoMatch:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.7
                         datapoints:
-                            pfTblEvalsNoMatch:
-                            rrdtype: DERIVE
+                            pfTblEvalsNoMatch: DERIVE
                     pfTblInPassPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.8
                         datapoints:
-                            pfTblInPassPkts:
-                            rrdtype: DERIVE
+                            pfTblInPassPkts: DERIVE
                     pfTblInPassBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.9
                         datapoints:
-                            pfTblInPassBytes:
-                            rrdtype: DERIVE
+                            pfTblInPassBytes: DERIVE
                     pfTblInBlockPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.10
                         datapoints:
-                            pfTblInBlockPkts:
-                            rrdtype: DERIVE
+                            pfTblInBlockPkts: DERIVE
                     pfTblInBlockBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.11
                         datapoints:
-                            pfTblInBlockBytes:
-                            rrdtype: DERIVE
+                            pfTblInBlockBytes: DERIVE
                     pfTblInXPassPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.12
                         datapoints:
-                            pfTblInXPassPkts:
-                            rrdtype: DERIVE
+                            pfTblInXPassPkts: DERIVE
                     pfTblInXPassBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.13
                         datapoints:
-                            pfTblInXPassBytes:
-                            rrdtype: DERIVE
+                            pfTblInXPassBytes: DERIVE
                     pfTblOutPassPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.14
                         datapoints:
-                            pfTblOutPassPkts:
-                            rrdtype: DERIVE
+                            pfTblOutPassPkts: DERIVE
                     pfTblOutPassBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.15
                         datapoints:
-                            pfTblOutPassBytes:
-                            rrdtype: DERIVE
+                            pfTblOutPassBytes: DERIVE
                     pfTblOutBlockPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.16
                         datapoints:
-                            pfTblOutBlockPkts:
-                            rrdtype: DERIVE
+                            pfTblOutBlockPkts: DERIVE
                     pfTblOutBlockBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.17
                         datapoints:
-                            pfTblOutBlockBytes:
-                            rrdtype: DERIVE
+                            pfTblOutBlockBytes: DERIVE
                     pfTblOutXPassPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.18
                         datapoints:
-                            pfTblOutXPassPkts:
-                            rrdtype: DERIVE
+                            pfTblOutXPassPkts: DERIVE
                     pfTblOutXPassBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.19
                         datapoints:
-                            pfTblOutXPassBytes:
-                            rrdtype: DERIVE
+                            pfTblOutXPassBytes: DERIVE
                     pfTblStatsCleared:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.20
                         datapoints:
-                            pfTblStatsCleared:
-                            rrdtype: GAUGE
+                            pfTblStatsCleared: DERIVE
                     pfTblInMatchPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.21
                         datapoints:
-                            pfTblInMatchPkts:
-                            rrdtype: DERIVE
+                            pfTblInMatchPkts: DERIVE
                     pfTblInMatchBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.22
                         datapoints:
-                            pfTblInMatchBytes:
-                            rrdtype: DERIVE
+                            pfTblInMatchBytes: DERIVE
                     pfTblOutMatchPkts:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.23
                         datapoints:
-                            pfTblOutMatchPkts:
-                            rrdtype: DERIVE
+                            pfTblOutMatchPkts: DERIVE
                     pfTblOutMatchBytes:
                         type: SNMP
                         component: "${here/id}"
                         oid: 1.3.6.1.4.1.30155.1.9.128.1.24
                         datapoints:
-                            pfTblOutMatchBytes:
-                            rrdtype: DERIVE
+                            pfTblOutMatchBytes: DERIVE
 
                 graphs:
                     Addresses:
