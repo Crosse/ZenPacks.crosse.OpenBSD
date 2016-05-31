@@ -907,10 +907,10 @@ device_classes:
                                 dpName: pfIfOut4PassPkts_pfIfOut4PassPkts
                                 format: "%6.2lf%s"
                             Blocked In:
-                                dpName: pfIfOut4PassPkts_pfIfOut4PassPkts
+                                dpName: pfIfIn4BlockPkts_pfIfIn4BlockPkts
                                 format: "%6.2lf%s"
                             Blocked Out:
-                                dpName: pfIfOut4PassPkts_pfIfOut4PassPkts
+                                dpName: pfIfOut4BlockPkts_pfIfOut4BlockPkts
                                 format: "%6.2lf%s"
 
                     IPv6 Packets:
@@ -923,10 +923,10 @@ device_classes:
                                 dpName: pfIfOut6PassPkts_pfIfOut6PassPkts
                                 format: "%6.2lf%s"
                             Blocked In:
-                                dpName: pfIfOut6PassPkts_pfIfOut6PassPkts
+                                dpName: pfIfIn6BlockPkts_pfIfIn6BlockPkts
                                 format: "%6.2lf%s"
                             Blocked Out:
-                                dpName: pfIfOut6PassPkts_pfIfOut6PassPkts
+                                dpName: pfIfOut6BlockPkts_pfIfOut6BlockPkts
                                 format: "%6.2lf%s"
 
                     IPv4 Bytes:
@@ -939,10 +939,10 @@ device_classes:
                                 dpName: pfIfOut4PassBytes_pfIfOut4PassBytes
                                 format: "%6.2lf%s"
                             Blocked In:
-                                dpName: pfIfOut4PassBytes_pfIfOut4PassBytes
+                                dpName: pfIfIn4BlockBytes_pfIfIn4BlockBytes
                                 format: "%6.2lf%s"
                             Blocked Out:
-                                dpName: pfIfOut4PassBytes_pfIfOut4PassBytes
+                                dpName: pfIfOut4BlockBytes_pfIfOut4BlockBytes
                                 format: "%6.2lf%s"
 
                     IPv6 Bytes:
@@ -955,10 +955,10 @@ device_classes:
                                 dpName: pfIfOut6PassBytes_pfIfOut6PassBytes
                                 format: "%6.2lf%s"
                             Blocked In:
-                                dpName: pfIfOut6PassBytes_pfIfOut6PassBytes
+                                dpName: pfIfIn6BlockBytes_pfIfIn6BlockBytes
                                 format: "%6.2lf%s"
                             Blocked Out:
-                                dpName: pfIfOut6PassBytes_pfIfOut6PassBytes
+                                dpName: pfIfOut6BlockBytes_pfIfOut6BlockBytes
                                 format: "%6.2lf%s"
 
             PacketFilterTable:
