@@ -30,131 +30,34 @@ classes:
     properties:
       DEFAULTS:
         type: int
-        details_display: false
-        grid_display: false
 
-      # pfInfo
       pfHostId:
         label: Host ID
         type: string
         order: 1
-        details_display: true
-        grid_display: true
       pfRunning:
         label: Running
-        type: bool
+        type: boolean
         renderer: Zenoss.render.checkbox
         order: 2
-        details_display: true
-        grid_display: true
         datapoint: pfRunning_pfRunning
       pfDebug:
         label: Logging Level
         short_label: Log Level
         enum: {0: "Emergency", 1: "Alert", 2: "Critical", 3: "Error", 4: "Warning", 5: "Notice", 6: "Info", 7: "Debug"}
         order: 3
-        details_display: true
-        grid_display: true
-        datapoint: pfDebug_pfDebug
-      pfRuntime:
-        label: Runtime
-        order: 4
-        details_display: true
-        grid_display: true
-        datapoint: pfRuntime_Runtime
-
-      # pfCounters
       pfCntMatch:
         label: Matched Packets
-      pfCntBadOffset:
-        label: Packets With Bad Offsets
-      pfCntFragment:
-        label: Packet Fragments
-      pfCntShort:
-        label: Short Packets
-      pfCntNormalize:
-        label: Normalized Packets
-      pfCntMemory:
-        label: Packets Dropped Due to Memory Pressure
-      pfCntTimestamp:
-        label: Packets Dropped Due to Improper Timestamp
-      pfCntCongestion:
-        label: Packets Dropped Due to Congestion
-      pfCntIpOption:
-        label: Packets Dropped Due to IP Options
-      pfCntProtoCksum:
-        label: Packets Dropped Due to Checksum
-      pfCntStateMismatch:
-        label: Packets Dropped Due to State Mismatch
-      pfCntStateInsert:
-        label: Packets Dropped Due to State Insert Error
-      pfCntStateLimit:
-        label: Packets Dropped Due to State Limit
-      pfCntSrcLimit:
-        label: Packets Dropped Due to Source Limit
-      pfCntSynproxy:
-        label: Packets Dropped Due to Synproxy
-      pfCntTranslate:
-        label: Packets Dropped Due to NAT
-      pfCntNoRoute:
-        label: Packets Dropped Due to No Route
-
-      # pfStateTable
+        order: 5
+        datapoint: pfCntMatch_pfCntMatch
       pfStateCount:
         label: State Table Entries
-      pfStateSearches:
-        label: State Table Searches
-      pfStateInserts:
-        label: State Table Inserts
-      pfStateRemovals:
-        label: State Table Removals
-
-      # pfLogInterface
+        order: 6
+        datapoint: pfStateCount_pfStateCount
       pfLogIfName:
         label: Log Interface
         type: string
-        order: 5
-        details_display: true
-        grid_display: true
-        datapoint: pfLogIfName_pfLogIfName
-      pfLogIfIpBytesIn:
-        label: Log Interface - Incoming IPv4 Bytes
-        renderer: Zenoss.render.bytesString
-      pfLogIfIpBytesOut:
-        label: Log Interface - Outgoing IPv4 Bytes
-        renderer: Zenoss.render.bytesString
-      pfLogIfIpPktsInPass:
-        label: Log Interface - Incoming IPv4 Packets Passed
-      pfLogIfIpPktsInDrop:
-        label: Log Interface - Incoming IPv4 Packets Dropped
-      pfLogIfIpPktsOutPass:
-        label: Log Interface - Outgoing IPv4 Packets Passed
-      pfLogIfIpPktsOutDrop:
-        label: Log Interface - Outgoing IPv4 Packets Dropped
-      pfLogIfIp6BytesIn:
-        label: Log Interface - Incoming IPv6 Bytes
-        renderer: Zenoss.render.bytesString
-      pfLogIfIp6BytesOut:
-        label: Log Interface - Outgoing IPv6 Bytes
-        renderer: Zenoss.render.bytesString
-      pfLogIfIp6PktsInPass:
-        label: Log Interface - Incoming IPv6 Packets Passed
-      pfLogIfIp6PktsInDrop:
-        label: Log Interface - Incoming IPv6 Packets Dropped
-      pfLogIfIp6PktsOutPass:
-        label: Log Interface - Outgoing IPv6 Packets Passed
-      pfLogIfIp6PktsOutDrop:
-        label: Log Interface - Outgoing IPv6 Packets Dropped
-
-      # pfSrcTracking
-      pfSrcTrackCount:
-        label: Source Tracking Entries
-      pfSrcTrackSearches:
-        label: Source Tracking Searches
-      pfSrcTrackInserts:
-        label: Source Tracking Inserts
-      pfSrcTrackRemovals:
-        label: Source Tracking Removals
+        order: 7
 
   PacketFilterInterface:
     base: [zenpacklib.Component]
@@ -183,46 +86,6 @@ classes:
         order: 3
         grid_display: true
         datapoint: pfIfRules_pfIfRules
-      pfIfIn4PassPkts:
-        label: Incoming IPv4 Packets Passed
-      pfIfIn4PassBytes:
-        label: Incoming IPv4 Bytes Passed
-        renderer: Zenoss.render.bytesString
-      pfIfIn4BlockPkts:
-        label: Incoming IPv4 Packets Blocked
-      pfIfIn4BlockBytes:
-        label: Incoming IPv4 Bytes Blocked
-        renderer: Zenoss.render.bytesString
-      pfIfOut4PassPkts:
-        label: Outgoing IPv4 Packets Passed
-      pfIfOut4PassBytes:
-        label: Outgoing IPv4 Bytes Passed
-        renderer: Zenoss.render.bytesString
-      pfIfOut4BlockPkts:
-        label: Outgoing IPv4 Packets Blocked
-      pfIfOut4BlockBytes:
-        label: Outgoing IPv4 Bytes Blocked
-        renderer: Zenoss.render.bytesString
-      pfIfIn6PassPkts:
-        label: Incoming IPv6 Packets Passed
-      pfIfIn6PassBytes:
-        label: Incoming IPv6 Bytes Passed
-        renderer: Zenoss.render.bytesString
-      pfIfIn6BlockPkts:
-        label: Incoming IPv6 Packets Blocked
-      pfIfIn6BlockBytes:
-        label: Incoming IPv6 Bytes Blocked
-        renderer: Zenoss.render.bytesString
-      pfIfOut6PassPkts:
-        label: Outgoing IPv6 Packets Passed
-      pfIfOut6PassBytes:
-        label: Outgoing IPv6 Bytes Passed
-        renderer: Zenoss.render.bytesString
-      pfIfOut6BlockPkts:
-        label: Outgoing IPv6 Packets Blocked
-      pfIfOut6BlockBytes:
-        label: Outgoing IPv6 Bytes Blocked
-        renderer: Zenoss.render.bytesString
 
   PacketFilterTable:
     base: [zenpacklib.Component]
@@ -235,78 +98,26 @@ classes:
         details_display: false
         grid_display: false
 
-      pfTblName:
-        label: Name
-        type: string
-        order: 1
-        details_display: true
-        grid_display: true
       pfTblAddresses:
         label: Addresses
-        order: 2
+        order: 1
         details_display: true
         grid_display: true
         datapoint: pfTblAddresses_pfTblAddresses
       pfTblAnchorRefs:
         label: Anchor References
         short_label: Anchor Refs
-        order: 3
+        order: 2
         details_display: true
         grid_display: true
         datapoint: pfTblAnchorRefs_pfTblAnchorRefs
       pfTblRuleRefs:
         label: Rule References
         short_label: Rule Refs
-        order: 4
+        order: 3
         details_display: true
         grid_display: true
         datapoint: pfTblRuleRefs_pfTblRuleRefs
-      pfTblEvalsMatch:
-        label: Table Evaluations (Matched)
-      pfTblEvalsNoMatch:
-        label: Table Evaluations (Not Matched)
-      pfTblInPassPkts:
-        label: Incoming Packets Passed
-      pfTblInPassBytes:
-        label: Incoming Bytes Passed
-        renderer: Zenoss.render.bytesString
-      pfTblInBlockPkts:
-        label: Incoming Packets Blocked
-      pfTblInBlockBytes:
-        label: Incoming Bytes Blocked
-        renderer: Zenoss.render.bytesString
-      pfTblInXPassPkts:
-        label: Incoimng Packets Passed (Address No Longer Listed)
-      pfTblInXPassBytes:
-        label: Incoming Bytes Passed (Address No Longer Listed)
-        renderer: Zenoss.render.bytesString
-      pfTblOutPassPkts:
-        label: Outgoing Packets Passed
-      pfTblOutPassBytes:
-        label: Outgoing Bytes Passed
-        renderer: Zenoss.render.bytesString
-      pfTblOutBlockPkts:
-        label: Outgoing Packets Blocked
-      pfTblOutBlockBytes:
-        label: Outgoing Bytes Blocked
-        renderer: Zenoss.render.bytesString
-      pfTblOutXPassPkts:
-        label: Outgoing Packets Passed (Address No Longer Listed)
-      pfTblOutXPassBytes:
-        label: Outgoing Bytes Passed (Address No Longer Listed)
-        renderer: Zenoss.render.bytesString
-      pfTblStatsCleared:
-        label: Stats Last Cleared
-      pfTblInMatchPkts:
-        label: Incoming Packets Matched
-      pfTblInMatchBytes:
-        label: Incoming Bytes Matched
-        renderer: Zenoss.render.bytesString
-      pfTblOutMatchPkts:
-        label: Outgoing Packets Matched
-      pfTblOutMatchBytes:
-        label: Outgoing Bytes Matched
-        renderer: Zenoss.render.bytesString
 
   PacketFilterLabel:
     base: [zenpacklib.Component]
@@ -318,33 +129,24 @@ classes:
         type: int
         grid_display: false
 
-      pfLabelEvals:
-        label: Rule Evaluations
-        datapoint: pfLabelEvals_pfLabelEvals
       pfLabelPkts:
         label: Matched Packets
-        order: 1
+        order: 2
         grid_display: true
         datapoint: pfLabelPkts_pfLabelPkts
       pfLabelBytes:
         label: Matched Bytes
         renderer: Zenoss.render.bytesString
-        order: 2
+        order: 3
         grid_display: true
         datapoint: pfLabelBytes_pfLabelBytes
-      pfLabelInPkts:
-        label: Incoming Packets Matched
-      pfLabelInBytes:
-        label: Incoming Bytes Matched
-        renderer: Zenoss.render.bytesString
-      pfLabelOutPkts:
-        label: Outgoing Packets Matched
-      pfLabelOutBytes:
-        label: Outgoing Bytes Matched
-        renderer: Zenoss.render.bytesString
+      pfLabelEvals:
+        label: Rule Evaluations
+        order: 1
+        datapoint: pfLabelEvals_pfLabelEvals
       pfLabelTotalStates:
         label: Total States
-        order: 3
+        order: 4
         grid_display: true
         datapoint: pfLabelTotalStates_pfLabelTotalStates
 
@@ -387,12 +189,6 @@ device_classes:
             oid: 1.3.6.1.4.1.30155.1.1.1.0
             datapoints:
               pfRunning: GAUGE
-          pfRuntime:
-            type: SNMP
-            component: "${here/id}"
-            oid: 1.3.6.1.4.1.30155.1.1.2.0
-            datapoints:
-              pfRuntime: GAUGE
           pfDebug:
             type: SNMP
             component: "${here/id}"
@@ -525,12 +321,6 @@ device_classes:
             oid: 1.3.6.1.4.1.30155.1.3.4.0
             datapoints:
               pfStateRemovals: DERIVE
-          pfLogIfName:
-            type: SNMP
-            component: "${here/id}"
-            oid: 1.3.6.1.4.1.30155.1.4.1.0
-            datapoints:
-              pfLogIfName: GAUGE
           pfLogIfIpBytesIn:
             type: SNMP
             component: "${here/id}"

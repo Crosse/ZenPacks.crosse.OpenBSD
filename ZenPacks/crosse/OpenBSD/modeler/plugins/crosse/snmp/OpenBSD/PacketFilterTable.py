@@ -16,30 +16,10 @@ class PacketFilterTable(SnmpPlugin):
     snmpGetTableMaps = (
             GetTableMap(
                 'pfTblTable', '1.3.6.1.4.1.30155.1.9.128.1', {
-                    '.1': 'pfTblIndex',
                     '.2': 'pfTblName',
                     '.3': 'pfTblAddresses',
                     '.4': 'pfTblAnchorRefs',
                     '.5': 'pfTblRuleRefs',
-                    '.6': 'pfTblEvalsMatch',
-                    '.7': 'pfTblEvalsNoMatch',
-                    '.8': 'pfTblInPassPkts',
-                    '.9': 'pfTblInPassBytes',
-                    '.11': 'pfTblInBlockPkts',
-                    '.11': 'pfTblInBlockBytes',
-                    '.12': 'pfTblInXPassPkts',
-                    '.13': 'pfTblInXPassBytes',
-                    '.14': 'pfTblOutPassPkts',
-                    '.15': 'pfTblOutPassBytes',
-                    '.16': 'pfTblOutBlockPkts',
-                    '.17': 'pfTblOutBlockBytes',
-                    '.18': 'pfTblOutXPassPkts',
-                    '.19': 'pfTblOutXPassBytes',
-                    '.20': 'pfTblStatsCleared',
-                    '.21': 'pfTblInMatchPkts',
-                    '.22': 'pfTblInMatchBytes',
-                    '.23': 'pfTblOutMatchPkts',
-                    '.24': 'pfTblOutMatchBytes',
                     }
                 ),
             )

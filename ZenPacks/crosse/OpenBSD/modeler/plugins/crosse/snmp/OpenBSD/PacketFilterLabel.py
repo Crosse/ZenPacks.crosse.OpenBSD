@@ -20,10 +20,6 @@ class PacketFilterLabel(SnmpPlugin):
                     '.3': 'pfLabelEvals',
                     '.4': 'pfLabelPkts',
                     '.5': 'pfLabelBytes',
-                    '.6': 'pfLabelInPkts',
-                    '.7': 'pfLabelInBytes',
-                    '.8': 'pfLabelOutPkts',
-                    '.9': 'pfLabelOutBytes',
                     '.10': 'pfLabelTotalStates',
                     }
                 ),
