@@ -1,3 +1,4 @@
+import re
 from Products.DataCollector.plugins.CollectorPlugin import (
         SnmpPlugin, GetTableMap, GetMap,
         )
@@ -9,6 +10,7 @@ class PacketFilterLabel(SnmpPlugin):
 
     deviceProperties = SnmpPlugin.deviceProperties + (
             'zPfLabelMonitorIgnore',
+            'zPfIgnoreLabels',
             )
 
     snmpGetTableMaps = (
@@ -46,6 +48,12 @@ class PacketFilterLabel(SnmpPlugin):
             name = row.get('pfLabelName')
             if not name:
                 log.warn('Skipping PF label with no name')
+                continue
+
+            # If the admin says we should ignore a label, ignore it.
+            regex = getattr(device, 'zPfIgnoreLabels', None)
+            if regex and re.match(regex, name):
+                log.info('Skipping %s (PF label) as it matches zPfIgnoreLabels.', name)
                 continue
 
             # Aggregate same-named label statistics.

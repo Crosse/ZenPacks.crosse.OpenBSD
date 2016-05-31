@@ -1,3 +1,4 @@
+import re
 from Products.DataCollector.plugins.CollectorPlugin import (
         SnmpPlugin, GetTableMap, GetMap,
         )
@@ -9,6 +10,7 @@ class PacketFilterInterface(SnmpPlugin):
 
     deviceProperties = SnmpPlugin.deviceProperties + (
             'zPfInterfaceMonitorIgnore',
+            'zPfIgnoreInterfaces',
             )
 
     snmpGetTableMaps = (
@@ -56,6 +58,12 @@ class PacketFilterInterface(SnmpPlugin):
             desc = row.get('pfIfDescr')
             if not desc:
                 log.warn('Skipping PF interface with no description')
+                continue
+
+            # If the admin says we should ignore an interface, ignore it.
+            regex = getattr(device, 'zPfIgnoreInterfaces', None)
+            if regex and re.match(regex, desc):
+                log.info('Skipping %s (PF interface) as it matches zPfIgnoreInterfaces.', desc)
                 continue
 
             values = {}

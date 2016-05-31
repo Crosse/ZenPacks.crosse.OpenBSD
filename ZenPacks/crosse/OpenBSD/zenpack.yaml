@@ -5,6 +5,12 @@ zProperties:
         category: OpenBSD
         type: boolean
 
+    zPfIgnoreInterfaces:
+        type: string
+    zPfIgnoreLabels:
+        type: string
+    zPfIgnoreTables:
+        type: string
     zPfInterfaceMonitorIgnore: {}
     zPfTableMonitorIgnore: {}
     zPfLabelMonitorIgnore: {}

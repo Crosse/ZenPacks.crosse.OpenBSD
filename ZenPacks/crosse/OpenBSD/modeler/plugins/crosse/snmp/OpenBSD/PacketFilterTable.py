@@ -1,3 +1,4 @@
+import re
 from Products.DataCollector.plugins.CollectorPlugin import (
         SnmpPlugin, GetTableMap, GetMap,
         )
@@ -9,6 +10,7 @@ class PacketFilterTable(SnmpPlugin):
 
     deviceProperties = SnmpPlugin.deviceProperties + (
             'zPfTableMonitorIgnore',
+            'zPfIgnoreTables',
             )
 
     snmpGetTableMaps = (
@@ -60,6 +62,12 @@ class PacketFilterTable(SnmpPlugin):
             name = row.get('pfTblName')
             if not name:
                 log.warn('Skipping PF table with no name')
+                continue
+
+            # If the admin says we should ignore a table, ignore it.
+            regex = getattr(device, 'zPfIgnoreTables', None)
+            if regex and re.match(regex, name):
+                log.info('Skipping %s (PF table) as it matches zPfIgnoreTables.', name)
                 continue
 
             values = {}
