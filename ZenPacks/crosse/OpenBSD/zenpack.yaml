@@ -332,6 +332,7 @@ classes:
         properties:
             DEFAULTS:
                 type: int
+                details_display: false
                 grid_display: false
 
             pfTblName:
@@ -403,15 +404,46 @@ classes:
             pfTblOutMatchBytes:
                 label: Bytes Matched Out
                 renderer: Zenoss.render.bytesString
+
+    PacketFilterLabel:
+        base: [zenpacklib.Component]
+        label: Packet Filter Label
+
+        properties:
+            DEFAULTS:
                 type: int
-                details_display: false
                 grid_display: false
+
+            pfLabelEvals:
+                label: Rule Evaluations
+            pfLabelPkts:
+                label: Matched Packets
+                order: 1
+                grid_display: true
+            pfLabelBytes:
+                label: Matched Bytes
+                renderer: Zenoss.render.bytesString
+                order: 2
+                grid_display: true
+            pfLabelInPkts:
+                label: Matched Incoming Packets
+            pfLabelInBytes:
+                label: Matched Incoming Bytes
+                renderer: Zenoss.render.bytesString
+            pfLabelOutPkts:
+                label: Matched Outgoing Packets
+            pfLabelOutBytes:
+                label: Matched Outgoing Bytes
+                renderer: Zenoss.render.bytesString
+            pfLabelTotalStates:
+                label: Total States
 
 
 class_relationships:
     - OpenBSDDevice(packetFilters) 1:MC (openBSDDevice)PacketFilter
     - OpenBSDDevice(packetFilterInterfaces) 1:MC (openBSDDevice)PacketFilterInterface
     - OpenBSDDevice(packetFilterTables) 1:MC (openBSDDevice)PacketFilterTable
+    - OpenBSDDevice(packetFilterLabels) 1:MC (openBSDDevice)PacketFilterLabel
 
 device_classes:
     /Server/OpenBSD:
@@ -421,6 +453,7 @@ device_classes:
             zCollectorPlugins:
                 - crosse.snmp.OpenBSD.PacketFilter
                 - crosse.snmp.OpenBSD.PacketFilterInterface
+                - crosse.snmp.OpenBSD.PacketFilterLabel
                 - crosse.snmp.OpenBSD.PacketFilterTable
                 - zenoss.snmp.CpuMap
                 - zenoss.snmp.DeviceMap
@@ -1298,4 +1331,96 @@ device_classes:
                                 format: "%6.2lf%s"
                             Match Out:
                                 dpName: pfTblOutMatchBytes_pfTblOutMatchBytes
+                                format: "%6.2lf%s"
+
+            PacketFilterLabel:
+                targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterLabel
+                description: PF label monitoring for OpenBSD devices.
+
+                datasources:
+                        pfLabelEvals:
+                            type: SNMP
+                            component: "${here/id}"
+                            oid: 1.3.6.1.4.1.30155.1.10.128.1.3
+                            datapoints:
+                                pfLabelEvals: DERIVE
+                        pfLabelPkts:
+                            type: SNMP
+                            component: "${here/id}"
+                            oid: 1.3.6.1.4.1.30155.1.10.128.1.4
+                            datapoints:
+                                pfLabelPkts: DERIVE
+                        pfLabelBytes:
+                            type: SNMP
+                            component: "${here/id}"
+                            oid: 1.3.6.1.4.1.30155.1.10.128.1.5
+                            datapoints:
+                                pfLabelBytes: DERIVE
+                        pfLabelInPkts:
+                            type: SNMP
+                            component: "${here/id}"
+                            oid: 1.3.6.1.4.1.30155.1.10.128.1.6
+                            datapoints:
+                                pfLabelInPkts: DERIVE
+                        pfLabelInBytes:
+                            type: SNMP
+                            component: "${here/id}"
+                            oid: 1.3.6.1.4.1.30155.1.10.128.1.7
+                            datapoints:
+                                pfLabelInBytes: DERIVE
+                        pfLabelOutPkts:
+                            type: SNMP
+                            component: "${here/id}"
+                            oid: 1.3.6.1.4.1.30155.1.10.128.1.8
+                            datapoints:
+                                pfLabelOutPkts: DERIVE
+                        pfLabelOutBytes:
+                            type: SNMP
+                            component: "${here/id}"
+                            oid: 1.3.6.1.4.1.30155.1.10.128.1.9
+                            datapoints:
+                                pfLabelOutBytes: DERIVE
+                        pfLabelTotalStates:
+                            type: SNMP
+                            component: "${here/id}"
+                            oid: 1.3.6.1.4.1.30155.1.10.128.1.10
+                            datapoints:
+                                pfLabelTotalStates: DERIVE
+
+                graphs:
+                    Evaluations:
+                        units: evals/sec
+                        graphpoints:
+                            Addresses:
+                                dpName: pfLabelEvals_pfLabelEvals
+                                format: "%6.2lf%s"
+                    States:
+                        units: states
+                        graphpoints:
+                            Total States:
+                                dpName: pfLabelTotalStates_pfLabelTotalStates
+                                format: "%6.2lf%s"
+                    Packets:
+                        units: packets/sec
+                        graphpoints:
+                            In:
+                                dpName: pfLabelInPkts_pfLabelInPkts
+                                format: "%6.2lf%s"
+                            Out:
+                                dpName: pfLabelOutPkts_pfLabelOutPkts
+                                format: "%6.2lf%s"
+                            Total:
+                                dpName: pfLabelPkts_pfLabelPkts
+                                format: "%6.2lf%s"
+                    Bytes:
+                        units: bytes/sec
+                        graphpoints:
+                            In:
+                                dpName: pfLabelInBytes_pfLabelInBytes
+                                format: "%6.2lf%s"
+                            Out:
+                                dpName: pfLabelOutBytes_pfLabelOutBytes
+                                format: "%6.2lf%s"
+                            Total:
+                                dpName: pfLabelBytes_pfLabelBytes
                                 format: "%6.2lf%s"
