@@ -18,312 +18,186 @@ classes:
         label: Packet Filter
         plural_label: Packet Filter
         properties:
+            DEFAULTS:
+                type: int
+                details_display: false
+                grid_display: false
+
             pfHostId:
                 label: Host ID
+                type: string
                 order: 1
+                details_display: true
+                grid_display: true
             pfRunning:
                 label: Running
                 type: bool
                 renderer: Zenoss.render.checkbox
                 order: 2
+                details_display: true
+                grid_display: true
             pfDebug:
                 label: Debug Level
-                type: int
                 enum: {0: "Emergency", 1: "Alert", 2: "Critical", 3: "Error", 4: "Warning", 5: "Notice", 6: "Info", 7: "Debug"}
                 order: 3
+                details_display: true
+                grid_display: true
             pfRuntime:
                 label: Runtime
-                type: int
                 order: 4
+                details_display: true
+                grid_display: true
             pfCntMatch:
                 label: Matches
-                type: int
-                details_display: false
-                grid_display: false
             pfCntBadOffset:
                 label: Bad Offsets
-                type: int
-                details_display: false
-                grid_display: false
             pfCntFragment:
                 label: Fragments
-                type: int
-                details_display: false
-                grid_display: false
             pfCntShort:
                 label: Short Packets
-                type: int
-                details_display: false
-                grid_display: false
             pfCntNormalize:
                 label: Normalized Packets
-                type: int
-                details_display: false
-                grid_display: false
             pfCntMemory:
                 label: Dropped - Memory Pressure
-                type: int
-                details_display: false
-                grid_display: false
             pfCntTimestamp:
                 label: Dropped - Improper Timestamp
-                type: int
-                details_display: false
-                grid_display: false
             pfCntCongestion:
                 label: Dropped - Congestion
-                type: int
-                details_display: false
-                grid_display: false
             pfCntIpOption:
                 label: Dropped - IP Options
-                type: int
-                details_display: false
-                grid_display: false
             pfCntProtoCksum:
                 label: Dropped - Checksum
-                type: int
-                details_display: false
-                grid_display: false
             pfCntStateMismatch:
                 label: Dropped - State Mismatch
-                type: int
-                details_display: false
-                grid_display: false
             pfCntStateInsert:
                 label: Dropped - State Insert Error
-                type: int
-                details_display: false
-                grid_display: false
             pfCntStateLimit:
                 label: Dropped - State Limit
-                type: int
-                details_display: false
-                grid_display: false
             pfCntSrcLimit:
                 label: Dropped - Source Limit
-                type: int
-                details_display: false
-                grid_display: false
             pfCntSynproxy:
                 label: Dropped - Synproxy
-                type: int
-                details_display: false
-                grid_display: false
             pfCntTranslate:
                 label: Dropped - NAT
-                type: int
-                details_display: false
-                grid_display: false
             pfCntNoRoute:
                 label: Dropped - No Route
-                type: int
-                details_display: false
-                grid_display: false
             pfStateCount:
                 label: State Count
-                type: int
-                details_display: false
-                grid_display: false
             pfStateSearches:
                 label: State Searches
-                type: int
-                details_display: false
-                grid_display: false
             pfStateInserts:
                 label: State Inserts
-                type: int
-                details_display: false
-                grid_display: false
             pfStateRemovals:
                 label: State Removals
-                type: int
-                details_display: false
-                grid_display: false
             pfLogIfName:
                 label: Log Interface
+                type: string
                 order: 5
+                details_display: true
+                grid_display: true
             pfLogIfIpBytesIn:
                 label: Log Interface - IPv4 Bytes In
-                type: int
                 renderer: Zenoss.render.bytesString
-                details_display: false
-                grid_display: false
             pfLogIfIpBytesOut:
                 label: Log Interface - IPv4 Bytes Out
-                type: int
                 renderer: Zenoss.render.bytesString
-                details_display: false
-                grid_display: false
             pfLogIfIpPktsInPass:
                 label: Log Interface - IPv4 Packets In (Pass)
-                type: int
-                details_display: false
-                grid_display: false
             pfLogIfIpPktsInDrop:
                 label: Log Interface - IPv4 Packets In (Drop)
-                type: int
-                details_display: false
-                grid_display: false
             pfLogIfIpPktsOutPass:
                 label: Log Interface - IPv4 Packets Out (Pass)
-                type: int
-                details_display: false
-                grid_display: false
             pfLogIfIpPktsOutDrop:
                 label: Log Interface - IPv4 Packets Out (Drop)
-                type: int
-                details_display: false
-                grid_display: false
             pfLogIfIp6BytesIn:
                 label: Log Interface - IPv6 Bytes In
-                type: int
                 renderer: Zenoss.render.bytesString
-                details_display: false
-                grid_display: false
             pfLogIfIp6BytesOut:
                 label: Log Interface - IPv6 Bytes Out
-                type: int
                 renderer: Zenoss.render.bytesString
-                details_display: false
-                grid_display: false
             pfLogIfIp6PktsInPass:
                 label: Log Interface - IPv6 Packets In (Pass)
-                type: int
-                details_display: false
-                grid_display: false
             pfLogIfIp6PktsInDrop:
                 label: Log Interface - IPv6 Packets In (Drop)
-                type: int
-                details_display: false
-                grid_display: false
             pfLogIfIp6PktsOutPass:
                 label: Log Interface - IPv6 Packets Out (Pass)
-                type: int
-                details_display: false
-                grid_display: false
             pfLogIfIp6PktsOutDrop:
                 label: Log Interface - IPv6 Packets Out (Drop)
-                type: int
-                details_display: false
-                grid_display: false
             pfSrcTrackCount:
                 label: Source Tracking Entries
-                type: int
-                details_display: false
-                grid_display: false
             pfSrcTrackSearches:
                 label: Source Tracking Searches
-                type: int
-                details_display: false
-                grid_display: false
             pfSrcTrackInserts:
                 label: Source Tracking Inserts
-                type: int
-                details_display: false
-                grid_display: false
             pfSrcTrackRemovals:
                 label: Source Tracking Removals
-                type: int
-                details_display: false
-                grid_display: false
 
     PacketFilterInterface:
         base: [zenpacklib.Component]
         label: Packet Filter Interface
 
         properties:
-            pfIfType:
-                label: Type
-                type: int
-                enum: {0: "Group", 1: "Interface", 2: "Removed"}
-                order: 1
-            pfIfIndex:
-                label: Index
+            DEFAULTS:
                 type: int
                 grid_display: false
+
+            pfIfType:
+                label: Type
+                enum: {0: "Group", 1: "Interface", 2: "Removed"}
+                order: 1
+                grid_display: true
+            pfIfIndex:
+                label: Index
             pfIfRefs:
                 label: State/Source Track References
                 short_label: State Refs
-                type: int
                 order: 2
+                grid_display: true
             pfIfRules:
                 label: Rule References
                 short_label: Rule Refs
-                type: int
                 order: 3
+                grid_display: true
             pfIfIn4PassPkts:
                 label: IPv4 Incoming Packets Passed
-                type: int
-                grid_display: false
             pfIfIn4PassBytes:
                 label: IPv4 Incoming Bytes Passed
-                type: int
                 renderer: Zenoss.render.bytesString
-                grid_display: false
             pfIfIn4BlockPkts:
                 label: IPv4 Incoming Packets Blocked
-                type: int
-                grid_display: false
             pfIfIn4BlockBytes:
                 label: IPv4 Incoming Bytes Blocked
-                type: int
                 renderer: Zenoss.render.bytesString
-                grid_display: false
             pfIfOut4PassPkts:
                 label: IPv4 Outgoing Packets Passed
-                type: int
-                grid_display: false
             pfIfOut4PassBytes:
                 label: IPv4 Outgoing Bytes Passed
-                type: int
                 renderer: Zenoss.render.bytesString
-                grid_display: false
             pfIfOut4BlockPkts:
                 label: IPv4 Outgoing Packets Blocked
-                type: int
-                grid_display: false
             pfIfOut4BlockBytes:
                 label: IPv4 Outgoing Bytes Blocked
-                type: int
                 renderer: Zenoss.render.bytesString
-                grid_display: false
             pfIfIn6PassPkts:
                 label: IPv6 Incoming Packets Passed
-                type: int
-                grid_display: false
             pfIfIn6PassBytes:
                 label: IPv6 Incoming Bytes Passed
-                type: int
                 renderer: Zenoss.render.bytesString
-                grid_display: false
             pfIfIn6BlockPkts:
                 label: IPv6 Incoming Packets Blocked
-                type: int
-                grid_display: false
             pfIfIn6BlockBytes:
                 label: IPv6 Incoming Bytes Blocked
-                type: int
                 renderer: Zenoss.render.bytesString
-                grid_display: false
             pfIfOut6PassPkts:
                 label: IPv6 Outgoing Packets Passed
-                type: int
-                grid_display: false
             pfIfOut6PassBytes:
                 label: IPv6 Outgoing Bytes Passed
-                type: int
                 renderer: Zenoss.render.bytesString
-                grid_display: false
             pfIfOut6BlockPkts:
                 label: IPv6 Outgoing Packets Blocked
-                type: int
-                grid_display: false
             pfIfOut6BlockBytes:
                 label: IPv6 Outgoing Bytes Blocked
                 renderer: Zenoss.render.bytesString
-                type: int
-                grid_display: false
 
     PacketFilterTable:
         base: [zenpacklib.Component]
