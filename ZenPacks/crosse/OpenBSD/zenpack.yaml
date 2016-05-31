@@ -1,1262 +1,1262 @@
 name: ZenPacks.crosse.OpenBSD
 
 zProperties:
-    DEFAULTS:
-        category: OpenBSD
-        type: boolean
+  DEFAULTS:
+    category: OpenBSD
+    type: boolean
 
-    zPfIgnoreInterfaces:
-        type: string
-    zPfIgnoreLabels:
-        type: string
-    zPfIgnoreTables:
-        type: string
-    zPfInterfaceMonitorIgnore: {}
-    zPfTableMonitorIgnore: {}
-    zPfLabelMonitorIgnore: {}
+  zPfIgnoreInterfaces:
+    type: string
+  zPfIgnoreLabels:
+    type: string
+  zPfIgnoreTables:
+    type: string
+  zPfInterfaceMonitorIgnore: {}
+  zPfTableMonitorIgnore: {}
+  zPfLabelMonitorIgnore: {}
 
 
 classes:
-    OpenBSDDevice:
-        base: [zenpacklib.Device]
-        label: OpenBSD
+  OpenBSDDevice:
+    base: [zenpacklib.Device]
+    label: OpenBSD
 
-    PacketFilter:
-        base: [zenpacklib.Component]
-        label: Packet Filter
-        plural_label: Packet Filter
-        order: 10
+  PacketFilter:
+    base: [zenpacklib.Component]
+    label: Packet Filter
+    plural_label: Packet Filter
+    order: 10
 
-        properties:
-            DEFAULTS:
-                type: int
-                details_display: false
-                grid_display: false
+    properties:
+      DEFAULTS:
+        type: int
+        details_display: false
+        grid_display: false
 
-            # pfInfo
-            pfHostId:
-                label: Host ID
-                type: string
-                order: 1
-                details_display: true
-                grid_display: true
-            pfRunning:
-                label: Running
-                type: bool
-                renderer: Zenoss.render.checkbox
-                order: 2
-                details_display: true
-                grid_display: true
-                datapoint: pfRunning_pfRunning
-            pfDebug:
-                label: Logging Level
-                short_label: Log Level
-                enum: {0: "Emergency", 1: "Alert", 2: "Critical", 3: "Error", 4: "Warning", 5: "Notice", 6: "Info", 7: "Debug"}
-                order: 3
-                details_display: true
-                grid_display: true
-                datapoint: pfDebug_pfDebug
-            pfRuntime:
-                label: Runtime
-                order: 4
-                details_display: true
-                grid_display: true
-                datapoint: pfRuntime_Runtime
+      # pfInfo
+      pfHostId:
+        label: Host ID
+        type: string
+        order: 1
+        details_display: true
+        grid_display: true
+      pfRunning:
+        label: Running
+        type: bool
+        renderer: Zenoss.render.checkbox
+        order: 2
+        details_display: true
+        grid_display: true
+        datapoint: pfRunning_pfRunning
+      pfDebug:
+        label: Logging Level
+        short_label: Log Level
+        enum: {0: "Emergency", 1: "Alert", 2: "Critical", 3: "Error", 4: "Warning", 5: "Notice", 6: "Info", 7: "Debug"}
+        order: 3
+        details_display: true
+        grid_display: true
+        datapoint: pfDebug_pfDebug
+      pfRuntime:
+        label: Runtime
+        order: 4
+        details_display: true
+        grid_display: true
+        datapoint: pfRuntime_Runtime
 
-            # pfCounters
-            pfCntMatch:
-                label: Matched Packets
-            pfCntBadOffset:
-                label: Packets With Bad Offsets
-            pfCntFragment:
-                label: Packet Fragments
-            pfCntShort:
-                label: Short Packets
-            pfCntNormalize:
-                label: Normalized Packets
-            pfCntMemory:
-                label: Packets Dropped Due to Memory Pressure
-            pfCntTimestamp:
-                label: Packets Dropped Due to Improper Timestamp
-            pfCntCongestion:
-                label: Packets Dropped Due to Congestion
-            pfCntIpOption:
-                label: Packets Dropped Due to IP Options
-            pfCntProtoCksum:
-                label: Packets Dropped Due to Checksum
-            pfCntStateMismatch:
-                label: Packets Dropped Due to State Mismatch
-            pfCntStateInsert:
-                label: Packets Dropped Due to State Insert Error
-            pfCntStateLimit:
-                label: Packets Dropped Due to State Limit
-            pfCntSrcLimit:
-                label: Packets Dropped Due to Source Limit
-            pfCntSynproxy:
-                label: Packets Dropped Due to Synproxy
-            pfCntTranslate:
-                label: Packets Dropped Due to NAT
-            pfCntNoRoute:
-                label: Packets Dropped Due to No Route
+      # pfCounters
+      pfCntMatch:
+        label: Matched Packets
+      pfCntBadOffset:
+        label: Packets With Bad Offsets
+      pfCntFragment:
+        label: Packet Fragments
+      pfCntShort:
+        label: Short Packets
+      pfCntNormalize:
+        label: Normalized Packets
+      pfCntMemory:
+        label: Packets Dropped Due to Memory Pressure
+      pfCntTimestamp:
+        label: Packets Dropped Due to Improper Timestamp
+      pfCntCongestion:
+        label: Packets Dropped Due to Congestion
+      pfCntIpOption:
+        label: Packets Dropped Due to IP Options
+      pfCntProtoCksum:
+        label: Packets Dropped Due to Checksum
+      pfCntStateMismatch:
+        label: Packets Dropped Due to State Mismatch
+      pfCntStateInsert:
+        label: Packets Dropped Due to State Insert Error
+      pfCntStateLimit:
+        label: Packets Dropped Due to State Limit
+      pfCntSrcLimit:
+        label: Packets Dropped Due to Source Limit
+      pfCntSynproxy:
+        label: Packets Dropped Due to Synproxy
+      pfCntTranslate:
+        label: Packets Dropped Due to NAT
+      pfCntNoRoute:
+        label: Packets Dropped Due to No Route
 
-            # pfStateTable
-            pfStateCount:
-                label: State Table Entries
-            pfStateSearches:
-                label: State Table Searches
-            pfStateInserts:
-                label: State Table Inserts
-            pfStateRemovals:
-                label: State Table Removals
+      # pfStateTable
+      pfStateCount:
+        label: State Table Entries
+      pfStateSearches:
+        label: State Table Searches
+      pfStateInserts:
+        label: State Table Inserts
+      pfStateRemovals:
+        label: State Table Removals
 
-            # pfLogInterface
-            pfLogIfName:
-                label: Log Interface
-                type: string
-                order: 5
-                details_display: true
-                grid_display: true
-                datapoint: pfLogIfName_pfLogIfName
-            pfLogIfIpBytesIn:
-                label: Log Interface - Incoming IPv4 Bytes
-                renderer: Zenoss.render.bytesString
-            pfLogIfIpBytesOut:
-                label: Log Interface - Outgoing IPv4 Bytes
-                renderer: Zenoss.render.bytesString
-            pfLogIfIpPktsInPass:
-                label: Log Interface - Incoming IPv4 Packets Passed
-            pfLogIfIpPktsInDrop:
-                label: Log Interface - Incoming IPv4 Packets Dropped
-            pfLogIfIpPktsOutPass:
-                label: Log Interface - Outgoing IPv4 Packets Passed
-            pfLogIfIpPktsOutDrop:
-                label: Log Interface - Outgoing IPv4 Packets Dropped
-            pfLogIfIp6BytesIn:
-                label: Log Interface - Incoming IPv6 Bytes
-                renderer: Zenoss.render.bytesString
-            pfLogIfIp6BytesOut:
-                label: Log Interface - Outgoing IPv6 Bytes
-                renderer: Zenoss.render.bytesString
-            pfLogIfIp6PktsInPass:
-                label: Log Interface - Incoming IPv6 Packets Passed
-            pfLogIfIp6PktsInDrop:
-                label: Log Interface - Incoming IPv6 Packets Dropped
-            pfLogIfIp6PktsOutPass:
-                label: Log Interface - Outgoing IPv6 Packets Passed
-            pfLogIfIp6PktsOutDrop:
-                label: Log Interface - Outgoing IPv6 Packets Dropped
+      # pfLogInterface
+      pfLogIfName:
+        label: Log Interface
+        type: string
+        order: 5
+        details_display: true
+        grid_display: true
+        datapoint: pfLogIfName_pfLogIfName
+      pfLogIfIpBytesIn:
+        label: Log Interface - Incoming IPv4 Bytes
+        renderer: Zenoss.render.bytesString
+      pfLogIfIpBytesOut:
+        label: Log Interface - Outgoing IPv4 Bytes
+        renderer: Zenoss.render.bytesString
+      pfLogIfIpPktsInPass:
+        label: Log Interface - Incoming IPv4 Packets Passed
+      pfLogIfIpPktsInDrop:
+        label: Log Interface - Incoming IPv4 Packets Dropped
+      pfLogIfIpPktsOutPass:
+        label: Log Interface - Outgoing IPv4 Packets Passed
+      pfLogIfIpPktsOutDrop:
+        label: Log Interface - Outgoing IPv4 Packets Dropped
+      pfLogIfIp6BytesIn:
+        label: Log Interface - Incoming IPv6 Bytes
+        renderer: Zenoss.render.bytesString
+      pfLogIfIp6BytesOut:
+        label: Log Interface - Outgoing IPv6 Bytes
+        renderer: Zenoss.render.bytesString
+      pfLogIfIp6PktsInPass:
+        label: Log Interface - Incoming IPv6 Packets Passed
+      pfLogIfIp6PktsInDrop:
+        label: Log Interface - Incoming IPv6 Packets Dropped
+      pfLogIfIp6PktsOutPass:
+        label: Log Interface - Outgoing IPv6 Packets Passed
+      pfLogIfIp6PktsOutDrop:
+        label: Log Interface - Outgoing IPv6 Packets Dropped
 
-            # pfSrcTracking
-            pfSrcTrackCount:
-                label: Source Tracking Entries
-            pfSrcTrackSearches:
-                label: Source Tracking Searches
-            pfSrcTrackInserts:
-                label: Source Tracking Inserts
-            pfSrcTrackRemovals:
-                label: Source Tracking Removals
+      # pfSrcTracking
+      pfSrcTrackCount:
+        label: Source Tracking Entries
+      pfSrcTrackSearches:
+        label: Source Tracking Searches
+      pfSrcTrackInserts:
+        label: Source Tracking Inserts
+      pfSrcTrackRemovals:
+        label: Source Tracking Removals
 
-    PacketFilterInterface:
-        base: [zenpacklib.Component]
-        label: Packet Filter Interface
-        order: 11
+  PacketFilterInterface:
+    base: [zenpacklib.Component]
+    label: Packet Filter Interface
+    order: 11
 
-        properties:
-            DEFAULTS:
-                type: int
-                grid_display: false
+    properties:
+      DEFAULTS:
+        type: int
+        grid_display: false
 
-            pfIfType:
-                label: Type
-                enum: {0: "Group", 1: "Interface", 2: "Removed"}
-                order: 1
-                grid_display: true
-            pfIfRefs:
-                label: State/Source Track References
-                short_label: State Refs
-                order: 2
-                grid_display: true
-                datapoint: pfIfRefs_pfIfRefs
-            pfIfRules:
-                label: Rule References
-                short_label: Rule Refs
-                order: 3
-                grid_display: true
-                datapoint: pfIfRules_pfIfRules
-            pfIfIn4PassPkts:
-                label: Incoming IPv4 Packets Passed
-            pfIfIn4PassBytes:
-                label: Incoming IPv4 Bytes Passed
-                renderer: Zenoss.render.bytesString
-            pfIfIn4BlockPkts:
-                label: Incoming IPv4 Packets Blocked
-            pfIfIn4BlockBytes:
-                label: Incoming IPv4 Bytes Blocked
-                renderer: Zenoss.render.bytesString
-            pfIfOut4PassPkts:
-                label: Outgoing IPv4 Packets Passed
-            pfIfOut4PassBytes:
-                label: Outgoing IPv4 Bytes Passed
-                renderer: Zenoss.render.bytesString
-            pfIfOut4BlockPkts:
-                label: Outgoing IPv4 Packets Blocked
-            pfIfOut4BlockBytes:
-                label: Outgoing IPv4 Bytes Blocked
-                renderer: Zenoss.render.bytesString
-            pfIfIn6PassPkts:
-                label: Incoming IPv6 Packets Passed
-            pfIfIn6PassBytes:
-                label: Incoming IPv6 Bytes Passed
-                renderer: Zenoss.render.bytesString
-            pfIfIn6BlockPkts:
-                label: Incoming IPv6 Packets Blocked
-            pfIfIn6BlockBytes:
-                label: Incoming IPv6 Bytes Blocked
-                renderer: Zenoss.render.bytesString
-            pfIfOut6PassPkts:
-                label: Outgoing IPv6 Packets Passed
-            pfIfOut6PassBytes:
-                label: Outgoing IPv6 Bytes Passed
-                renderer: Zenoss.render.bytesString
-            pfIfOut6BlockPkts:
-                label: Outgoing IPv6 Packets Blocked
-            pfIfOut6BlockBytes:
-                label: Outgoing IPv6 Bytes Blocked
-                renderer: Zenoss.render.bytesString
+      pfIfType:
+        label: Type
+        enum: {0: "Group", 1: "Interface", 2: "Removed"}
+        order: 1
+        grid_display: true
+      pfIfRefs:
+        label: State/Source Track References
+        short_label: State Refs
+        order: 2
+        grid_display: true
+        datapoint: pfIfRefs_pfIfRefs
+      pfIfRules:
+        label: Rule References
+        short_label: Rule Refs
+        order: 3
+        grid_display: true
+        datapoint: pfIfRules_pfIfRules
+      pfIfIn4PassPkts:
+        label: Incoming IPv4 Packets Passed
+      pfIfIn4PassBytes:
+        label: Incoming IPv4 Bytes Passed
+        renderer: Zenoss.render.bytesString
+      pfIfIn4BlockPkts:
+        label: Incoming IPv4 Packets Blocked
+      pfIfIn4BlockBytes:
+        label: Incoming IPv4 Bytes Blocked
+        renderer: Zenoss.render.bytesString
+      pfIfOut4PassPkts:
+        label: Outgoing IPv4 Packets Passed
+      pfIfOut4PassBytes:
+        label: Outgoing IPv4 Bytes Passed
+        renderer: Zenoss.render.bytesString
+      pfIfOut4BlockPkts:
+        label: Outgoing IPv4 Packets Blocked
+      pfIfOut4BlockBytes:
+        label: Outgoing IPv4 Bytes Blocked
+        renderer: Zenoss.render.bytesString
+      pfIfIn6PassPkts:
+        label: Incoming IPv6 Packets Passed
+      pfIfIn6PassBytes:
+        label: Incoming IPv6 Bytes Passed
+        renderer: Zenoss.render.bytesString
+      pfIfIn6BlockPkts:
+        label: Incoming IPv6 Packets Blocked
+      pfIfIn6BlockBytes:
+        label: Incoming IPv6 Bytes Blocked
+        renderer: Zenoss.render.bytesString
+      pfIfOut6PassPkts:
+        label: Outgoing IPv6 Packets Passed
+      pfIfOut6PassBytes:
+        label: Outgoing IPv6 Bytes Passed
+        renderer: Zenoss.render.bytesString
+      pfIfOut6BlockPkts:
+        label: Outgoing IPv6 Packets Blocked
+      pfIfOut6BlockBytes:
+        label: Outgoing IPv6 Bytes Blocked
+        renderer: Zenoss.render.bytesString
 
-    PacketFilterTable:
-        base: [zenpacklib.Component]
-        label: Packet Filter Table
-        order: 12
+  PacketFilterTable:
+    base: [zenpacklib.Component]
+    label: Packet Filter Table
+    order: 12
 
-        properties:
-            DEFAULTS:
-                type: int
-                details_display: false
-                grid_display: false
+    properties:
+      DEFAULTS:
+        type: int
+        details_display: false
+        grid_display: false
 
-            pfTblName:
-                label: Name
-                type: string
-                order: 1
-                details_display: true
-                grid_display: true
-            pfTblAddresses:
-                label: Addresses
-                order: 2
-                details_display: true
-                grid_display: true
-                datapoint: pfTblAddresses_pfTblAddresses
-            pfTblAnchorRefs:
-                label: Anchor References
-                short_label: Anchor Refs
-                order: 3
-                details_display: true
-                grid_display: true
-                datapoint: pfTblAnchorRefs_pfTblAnchorRefs
-            pfTblRuleRefs:
-                label: Rule References
-                short_label: Rule Refs
-                order: 4
-                details_display: true
-                grid_display: true
-                datapoint: pfTblRuleRefs_pfTblRuleRefs
-            pfTblEvalsMatch:
-                label: Table Evaluations (Matched)
-            pfTblEvalsNoMatch:
-                label: Table Evaluations (Not Matched)
-            pfTblInPassPkts:
-                label: Incoming Packets Passed
-            pfTblInPassBytes:
-                label: Incoming Bytes Passed
-                renderer: Zenoss.render.bytesString
-            pfTblInBlockPkts:
-                label: Incoming Packets Blocked
-            pfTblInBlockBytes:
-                label: Incoming Bytes Blocked
-                renderer: Zenoss.render.bytesString
-            pfTblInXPassPkts:
-                label: Incoimng Packets Passed (Address No Longer Listed)
-            pfTblInXPassBytes:
-                label: Incoming Bytes Passed (Address No Longer Listed)
-                renderer: Zenoss.render.bytesString
-            pfTblOutPassPkts:
-                label: Outgoing Packets Passed
-            pfTblOutPassBytes:
-                label: Outgoing Bytes Passed
-                renderer: Zenoss.render.bytesString
-            pfTblOutBlockPkts:
-                label: Outgoing Packets Blocked
-            pfTblOutBlockBytes:
-                label: Outgoing Bytes Blocked
-                renderer: Zenoss.render.bytesString
-            pfTblOutXPassPkts:
-                label: Outgoing Packets Passed (Address No Longer Listed)
-            pfTblOutXPassBytes:
-                label: Outgoing Bytes Passed (Address No Longer Listed)
-                renderer: Zenoss.render.bytesString
-            pfTblStatsCleared:
-                label: Stats Last Cleared
-            pfTblInMatchPkts:
-                label: Incoming Packets Matched
-            pfTblInMatchBytes:
-                label: Incoming Bytes Matched
-                renderer: Zenoss.render.bytesString
-            pfTblOutMatchPkts:
-                label: Outgoing Packets Matched
-            pfTblOutMatchBytes:
-                label: Outgoing Bytes Matched
-                renderer: Zenoss.render.bytesString
+      pfTblName:
+        label: Name
+        type: string
+        order: 1
+        details_display: true
+        grid_display: true
+      pfTblAddresses:
+        label: Addresses
+        order: 2
+        details_display: true
+        grid_display: true
+        datapoint: pfTblAddresses_pfTblAddresses
+      pfTblAnchorRefs:
+        label: Anchor References
+        short_label: Anchor Refs
+        order: 3
+        details_display: true
+        grid_display: true
+        datapoint: pfTblAnchorRefs_pfTblAnchorRefs
+      pfTblRuleRefs:
+        label: Rule References
+        short_label: Rule Refs
+        order: 4
+        details_display: true
+        grid_display: true
+        datapoint: pfTblRuleRefs_pfTblRuleRefs
+      pfTblEvalsMatch:
+        label: Table Evaluations (Matched)
+      pfTblEvalsNoMatch:
+        label: Table Evaluations (Not Matched)
+      pfTblInPassPkts:
+        label: Incoming Packets Passed
+      pfTblInPassBytes:
+        label: Incoming Bytes Passed
+        renderer: Zenoss.render.bytesString
+      pfTblInBlockPkts:
+        label: Incoming Packets Blocked
+      pfTblInBlockBytes:
+        label: Incoming Bytes Blocked
+        renderer: Zenoss.render.bytesString
+      pfTblInXPassPkts:
+        label: Incoimng Packets Passed (Address No Longer Listed)
+      pfTblInXPassBytes:
+        label: Incoming Bytes Passed (Address No Longer Listed)
+        renderer: Zenoss.render.bytesString
+      pfTblOutPassPkts:
+        label: Outgoing Packets Passed
+      pfTblOutPassBytes:
+        label: Outgoing Bytes Passed
+        renderer: Zenoss.render.bytesString
+      pfTblOutBlockPkts:
+        label: Outgoing Packets Blocked
+      pfTblOutBlockBytes:
+        label: Outgoing Bytes Blocked
+        renderer: Zenoss.render.bytesString
+      pfTblOutXPassPkts:
+        label: Outgoing Packets Passed (Address No Longer Listed)
+      pfTblOutXPassBytes:
+        label: Outgoing Bytes Passed (Address No Longer Listed)
+        renderer: Zenoss.render.bytesString
+      pfTblStatsCleared:
+        label: Stats Last Cleared
+      pfTblInMatchPkts:
+        label: Incoming Packets Matched
+      pfTblInMatchBytes:
+        label: Incoming Bytes Matched
+        renderer: Zenoss.render.bytesString
+      pfTblOutMatchPkts:
+        label: Outgoing Packets Matched
+      pfTblOutMatchBytes:
+        label: Outgoing Bytes Matched
+        renderer: Zenoss.render.bytesString
 
-    PacketFilterLabel:
-        base: [zenpacklib.Component]
-        label: Packet Filter Label
-        order: 13
+  PacketFilterLabel:
+    base: [zenpacklib.Component]
+    label: Packet Filter Label
+    order: 13
 
-        properties:
-            DEFAULTS:
-                type: int
-                grid_display: false
+    properties:
+      DEFAULTS:
+        type: int
+        grid_display: false
 
-            pfLabelEvals:
-                label: Rule Evaluations
-                datapoint: pfLabelEvals_pfLabelEvals
-            pfLabelPkts:
-                label: Matched Packets
-                order: 1
-                grid_display: true
-                datapoint: pfLabelPkts_pfLabelPkts
-            pfLabelBytes:
-                label: Matched Bytes
-                renderer: Zenoss.render.bytesString
-                order: 2
-                grid_display: true
-                datapoint: pfLabelBytes_pfLabelBytes
-            pfLabelInPkts:
-                label: Incoming Packets Matched
-            pfLabelInBytes:
-                label: Incoming Bytes Matched
-                renderer: Zenoss.render.bytesString
-            pfLabelOutPkts:
-                label: Outgoing Packets Matched
-            pfLabelOutBytes:
-                label: Outgoing Bytes Matched
-                renderer: Zenoss.render.bytesString
-            pfLabelTotalStates:
-                label: Total States
-                order: 3
-                grid_display: true
-                datapoint: pfLabelTotalStates_pfLabelTotalStates
+      pfLabelEvals:
+        label: Rule Evaluations
+        datapoint: pfLabelEvals_pfLabelEvals
+      pfLabelPkts:
+        label: Matched Packets
+        order: 1
+        grid_display: true
+        datapoint: pfLabelPkts_pfLabelPkts
+      pfLabelBytes:
+        label: Matched Bytes
+        renderer: Zenoss.render.bytesString
+        order: 2
+        grid_display: true
+        datapoint: pfLabelBytes_pfLabelBytes
+      pfLabelInPkts:
+        label: Incoming Packets Matched
+      pfLabelInBytes:
+        label: Incoming Bytes Matched
+        renderer: Zenoss.render.bytesString
+      pfLabelOutPkts:
+        label: Outgoing Packets Matched
+      pfLabelOutBytes:
+        label: Outgoing Bytes Matched
+        renderer: Zenoss.render.bytesString
+      pfLabelTotalStates:
+        label: Total States
+        order: 3
+        grid_display: true
+        datapoint: pfLabelTotalStates_pfLabelTotalStates
 
 
 class_relationships:
-    - OpenBSDDevice(packetFilters) 1:MC (openBSDDevice)PacketFilter
-    - OpenBSDDevice(packetFilterInterfaces) 1:MC (openBSDDevice)PacketFilterInterface
-    - OpenBSDDevice(packetFilterTables) 1:MC (openBSDDevice)PacketFilterTable
-    - OpenBSDDevice(packetFilterLabels) 1:MC (openBSDDevice)PacketFilterLabel
+  - OpenBSDDevice(packetFilters) 1:MC (openBSDDevice)PacketFilter
+  - OpenBSDDevice(packetFilterInterfaces) 1:MC (openBSDDevice)PacketFilterInterface
+  - OpenBSDDevice(packetFilterTables) 1:MC (openBSDDevice)PacketFilterTable
+  - OpenBSDDevice(packetFilterLabels) 1:MC (openBSDDevice)PacketFilterLabel
 
 device_classes:
-    /Server/OpenBSD:
-        zProperties:
-            zPythonClass: ZenPacks.crosse.OpenBSD.OpenBSDDevice
-            zInterfaceMapIgnoreNames: "^pflog.*"
-            zPfIgnoreInterfaces: "^pflog.*"
-            zCollectorPlugins:
-                - crosse.snmp.OpenBSD.PacketFilter
-                - crosse.snmp.OpenBSD.PacketFilterInterface
-                - crosse.snmp.OpenBSD.PacketFilterLabel
-                - crosse.snmp.OpenBSD.PacketFilterTable
-                - zenoss.snmp.CpuMap
-                - zenoss.snmp.DeviceMap
-                - zenoss.snmp.HRFileSystemMap
-                - zenoss.snmp.InterfaceMap
-                - zenoss.snmp.IpServiceMap
-                - zenoss.snmp.NewDeviceMap
-                - zenoss.snmp.RouteMap
-                - zenoss.snmp.SnmpV3EngineIdMap
+  /Server/OpenBSD:
+    zProperties:
+      zPythonClass: ZenPacks.crosse.OpenBSD.OpenBSDDevice
+      zInterfaceMapIgnoreNames: "^pflog.*"
+      zPfIgnoreInterfaces: "^pflog.*"
+      zCollectorPlugins:
+        - crosse.snmp.OpenBSD.PacketFilter
+        - crosse.snmp.OpenBSD.PacketFilterInterface
+        - crosse.snmp.OpenBSD.PacketFilterLabel
+        - crosse.snmp.OpenBSD.PacketFilterTable
+        - zenoss.snmp.CpuMap
+        - zenoss.snmp.DeviceMap
+        - zenoss.snmp.HRFileSystemMap
+        - zenoss.snmp.InterfaceMap
+        - zenoss.snmp.IpServiceMap
+        - zenoss.snmp.NewDeviceMap
+        - zenoss.snmp.RouteMap
+        - zenoss.snmp.SnmpV3EngineIdMap
 
-        templates:
-            PacketFilter:
-                targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilter
-                description: PF monitoring for OpenBSD devices.
+    templates:
+      PacketFilter:
+        targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilter
+        description: PF monitoring for OpenBSD devices.
 
-                datasources:
-                    pfRunning:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.1.1.0
-                        datapoints:
-                            pfRunning: GAUGE
-                    pfRuntime:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.1.2.0
-                        datapoints:
-                            pfRuntime: GAUGE
-                    pfDebug:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.1.3.0
-                        datapoints:
-                            pfDebug: GAUGE
-                    pfCntMatch:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.1.0
-                        datapoints:
-                            pfCntMatch: DERIVE
-                    pfCntBadOffset:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.2.0
-                        datapoints:
-                            pfCntBadOffset: DERIVE
-                    pfCntFragment:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.3.0
-                        datapoints:
-                            pfCntFragment: DERIVE
-                    pfCntShort:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.4.0
-                        datapoints:
-                            pfCntShort: DERIVE
-                    pfCntNormalize:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.5.0
-                        datapoints:
-                            pfCntNormalize: DERIVE
-                    pfCntMemory:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.6.0
-                        datapoints:
-                            pfCntMemory: DERIVE
-                    pfCntTimestamp:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.7.0
-                        datapoints:
-                            pfCntTimestamp: DERIVE
-                    pfCntCongestion:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.8.0
-                        datapoints:
-                            pfCntCongestion: DERIVE
-                    pfCntIpOption:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.9.0
-                        datapoints:
-                            pfCntIpOption: DERIVE
-                    pfCntProtoCksum:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.10.0
-                        datapoints:
-                            pfCntProtoCksum: DERIVE
-                    pfCntStateMismatch:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.11.0
-                        datapoints:
-                            pfCntStateMismatch: DERIVE
-                    pfCntStateInsert:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.12.0
-                        datapoints:
-                            pfCntStateInsert: DERIVE
-                    pfCntStateLimit:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.13.0
-                        datapoints:
-                            pfCntStateLimit: DERIVE
-                    pfCntSrcLimit:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.14.0
-                        datapoints:
-                            pfCntSrcLimit: DERIVE
-                    pfCntSynproxy:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.15.0
-                        datapoints:
-                            pfCntSynproxy: DERIVE
-                    pfCntTranslate:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.16.0
-                        datapoints:
-                            pfCntTranslate: DERIVE
-                    pfCntNoRoute:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.2.17.0
-                        datapoints:
-                            pfCntNoRoute: DERIVE
-                    pfStateCount:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.3.1.0
-                        datapoints:
-                            pfStateCount: GAUGE
-                    pfStateSearches:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.3.2.0
-                        datapoints:
-                            pfStateSearches: DERIVE
-                    pfStateInserts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.3.3.0
-                        datapoints:
-                            pfStateInserts: DERIVE
-                    pfStateRemovals:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.3.4.0
-                        datapoints:
-                            pfStateRemovals: DERIVE
-                    pfLogIfName:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.1.0
-                        datapoints:
-                            pfLogIfName: GAUGE
-                    pfLogIfIpBytesIn:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.2.0
-                        datapoints:
-                            pfLogIfIpBytesIn: DERIVE
-                    pfLogIfIpBytesOut:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.3.0
-                        datapoints:
-                            pfLogIfIpBytesOut: DERIVE
-                    pfLogIfIpPktsInPass:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.4.0
-                        datapoints:
-                            pfLogIfIpPktsInPass: DERIVE
-                    pfLogIfIpPktsInDrop:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.5.0
-                        datapoints:
-                            pfLogIfIpPktsInDrop: DERIVE
-                    pfLogIfIpPktsOutPass:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.6.0
-                        datapoints:
-                            pfLogIfIpPktsOutPass: DERIVE
-                    pfLogIfIpPktsOutDrop:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.7.0
-                        datapoints:
-                            pfLogIfIpPktsOutDrop: DERIVE
-                    pfLogIfIp6BytesIn:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.8.0
-                        datapoints:
-                            pfLogIfIp6BytesIn: DERIVE
-                    pfLogIfIp6BytesOut:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.9.0
-                        datapoints:
-                            pfLogIfIp6BytesOut: DERIVE
-                    pfLogIfIp6PktsInPass:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.10.0
-                        datapoints:
-                            pfLogIfIp6PktsInPass: DERIVE
-                    pfLogIfIp6PktsInDrop:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.11.0
-                        datapoints:
-                            pfLogIfIp6PktsInDrop: DERIVE
-                    pfLogIfIp6PktsOutPass:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.12.0
-                        datapoints:
-                            pfLogIfIp6PktsOutPass: DERIVE
-                    pfLogIfIp6PktsOutDrop:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.4.13.0
-                        datapoints:
-                            pfLogIfIp6PktsOutDrop: DERIVE
-                    pfSrcTrackCount:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.5.1.0
-                        datapoints:
-                            pfLogIfIp6PktsOutDrop: GAUGE
-                    pfSrcTrackSearches:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.5.2.0
-                        datapoints:
-                            pfSrcTrackSearches: DERIVE
-                    pfSrcTrackInserts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.5.3.0
-                        datapoints:
-                            pfSrcTrackInserts: DERIVE
-                    pfSrcTrackRemovals:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.5.4.0
-                        datapoints:
-                            pfSrcTrackRemovals: DERIVE
+        datasources:
+          pfRunning:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.1.1.0
+            datapoints:
+              pfRunning: GAUGE
+          pfRuntime:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.1.2.0
+            datapoints:
+              pfRuntime: GAUGE
+          pfDebug:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.1.3.0
+            datapoints:
+              pfDebug: GAUGE
+          pfCntMatch:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.1.0
+            datapoints:
+              pfCntMatch: DERIVE
+          pfCntBadOffset:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.2.0
+            datapoints:
+              pfCntBadOffset: DERIVE
+          pfCntFragment:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.3.0
+            datapoints:
+              pfCntFragment: DERIVE
+          pfCntShort:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.4.0
+            datapoints:
+              pfCntShort: DERIVE
+          pfCntNormalize:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.5.0
+            datapoints:
+              pfCntNormalize: DERIVE
+          pfCntMemory:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.6.0
+            datapoints:
+              pfCntMemory: DERIVE
+          pfCntTimestamp:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.7.0
+            datapoints:
+              pfCntTimestamp: DERIVE
+          pfCntCongestion:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.8.0
+            datapoints:
+              pfCntCongestion: DERIVE
+          pfCntIpOption:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.9.0
+            datapoints:
+              pfCntIpOption: DERIVE
+          pfCntProtoCksum:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.10.0
+            datapoints:
+              pfCntProtoCksum: DERIVE
+          pfCntStateMismatch:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.11.0
+            datapoints:
+              pfCntStateMismatch: DERIVE
+          pfCntStateInsert:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.12.0
+            datapoints:
+              pfCntStateInsert: DERIVE
+          pfCntStateLimit:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.13.0
+            datapoints:
+              pfCntStateLimit: DERIVE
+          pfCntSrcLimit:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.14.0
+            datapoints:
+              pfCntSrcLimit: DERIVE
+          pfCntSynproxy:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.15.0
+            datapoints:
+              pfCntSynproxy: DERIVE
+          pfCntTranslate:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.16.0
+            datapoints:
+              pfCntTranslate: DERIVE
+          pfCntNoRoute:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.2.17.0
+            datapoints:
+              pfCntNoRoute: DERIVE
+          pfStateCount:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.3.1.0
+            datapoints:
+              pfStateCount: GAUGE
+          pfStateSearches:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.3.2.0
+            datapoints:
+              pfStateSearches: DERIVE
+          pfStateInserts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.3.3.0
+            datapoints:
+              pfStateInserts: DERIVE
+          pfStateRemovals:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.3.4.0
+            datapoints:
+              pfStateRemovals: DERIVE
+          pfLogIfName:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.1.0
+            datapoints:
+              pfLogIfName: GAUGE
+          pfLogIfIpBytesIn:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.2.0
+            datapoints:
+              pfLogIfIpBytesIn: DERIVE
+          pfLogIfIpBytesOut:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.3.0
+            datapoints:
+              pfLogIfIpBytesOut: DERIVE
+          pfLogIfIpPktsInPass:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.4.0
+            datapoints:
+              pfLogIfIpPktsInPass: DERIVE
+          pfLogIfIpPktsInDrop:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.5.0
+            datapoints:
+              pfLogIfIpPktsInDrop: DERIVE
+          pfLogIfIpPktsOutPass:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.6.0
+            datapoints:
+              pfLogIfIpPktsOutPass: DERIVE
+          pfLogIfIpPktsOutDrop:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.7.0
+            datapoints:
+              pfLogIfIpPktsOutDrop: DERIVE
+          pfLogIfIp6BytesIn:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.8.0
+            datapoints:
+              pfLogIfIp6BytesIn: DERIVE
+          pfLogIfIp6BytesOut:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.9.0
+            datapoints:
+              pfLogIfIp6BytesOut: DERIVE
+          pfLogIfIp6PktsInPass:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.10.0
+            datapoints:
+              pfLogIfIp6PktsInPass: DERIVE
+          pfLogIfIp6PktsInDrop:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.11.0
+            datapoints:
+              pfLogIfIp6PktsInDrop: DERIVE
+          pfLogIfIp6PktsOutPass:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.12.0
+            datapoints:
+              pfLogIfIp6PktsOutPass: DERIVE
+          pfLogIfIp6PktsOutDrop:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.4.13.0
+            datapoints:
+              pfLogIfIp6PktsOutDrop: DERIVE
+          pfSrcTrackCount:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.5.1.0
+            datapoints:
+              pfLogIfIp6PktsOutDrop: GAUGE
+          pfSrcTrackSearches:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.5.2.0
+            datapoints:
+              pfSrcTrackSearches: DERIVE
+          pfSrcTrackInserts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.5.3.0
+            datapoints:
+              pfSrcTrackInserts: DERIVE
+          pfSrcTrackRemovals:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.5.4.0
+            datapoints:
+              pfSrcTrackRemovals: DERIVE
 
-                graphs:
-                    States:
-                        units: states
-                        graphpoints:
-                            States:
-                                dpName: pfStateCount_pfStateCount
-                                format: "%8.2lf%s"
+        graphs:
+          States:
+            units: states
+            graphpoints:
+              States:
+                dpName: pfStateCount_pfStateCount
+                format: "%8.2lf%s"
 
-                    State Operations:
-                        units: ops/sec
-                        graphpoints:
-                            Searches:
-                                dpName: pfStateSearches_pfStateSearches
-                                format: "%8.2lf%s"
-                            Inserts:
-                                dpName: pfStateInserts_pfStateInserts
-                                format: "%8.2lf%s"
-                            Removals:
-                                dpName: pfStateRemovals_pfStateRemovals
-                                format: "%8.2lf%s"
+          State Operations:
+            units: ops/sec
+            graphpoints:
+              Searches:
+                dpName: pfStateSearches_pfStateSearches
+                format: "%8.2lf%s"
+              Inserts:
+                dpName: pfStateInserts_pfStateInserts
+                format: "%8.2lf%s"
+              Removals:
+                dpName: pfStateRemovals_pfStateRemovals
+                format: "%8.2lf%s"
 
-                    Dropped Packets:
-                        units: packets/sec
-                        graphpoints:
-                            "Memory Limit":
-                                dpName: pfCntMemory_pfCntMemory
-                                format: "%6.2lf%s"
-                            "Bad Timestamp":
-                                dpName: pfCntTimestamp_pfCntTimestamp
-                                format: "%6.2lf%s"
-                            "Congestion":
-                                dpName: pfCntCongestion_pfCntCongestion
-                                format: "%6.2lf%s"
-                            "IP Option":
-                                dpName: pfCntIpOption_pfCntIpOption
-                                format: "%6.2lf%s"
-                            "Bad Checksum":
-                                dpName: pfCntProtoCksum_pfCntProtoCksum
-                                format: "%6.2lf%s"
-                            "State Mismatch":
-                                dpName: pfCntStateMismatch_pfCntStateMismatch
-                                format: "%6.2lf%s"
-                            "State Insert":
-                                dpName: pfCntStateInsert_pfCntStateInsert
-                                format: "%6.2lf%s"
-                            "Rule State Lim.":
-                                dpName: pfCntStateLimit_pfCntStateLimit
-                                format: "%6.2lf%s"
-                            "Src State Lim.":
-                                dpName: pfCntSrcLimit_pfCntSrcLimit
-                                format: "%6.2lf%s"
-                            "Synproxy":
-                                dpName: pfCntSynproxy_pfCntSynproxy
-                                format: "%6.2lf%s"
-                            "NAT":
-                                dpName: pfCntTranslate_pfCntTranslate
-                                format: "%6.2lf%s"
-                            "No Route":
-                                dpName: pfCntNoRoute_pfCntNoRoute
-                                format: "%6.2lf%s"
+          Dropped Packets:
+            units: packets/sec
+            graphpoints:
+              "Memory Limit":
+                dpName: pfCntMemory_pfCntMemory
+                format: "%6.2lf%s"
+              "Bad Timestamp":
+                dpName: pfCntTimestamp_pfCntTimestamp
+                format: "%6.2lf%s"
+              "Congestion":
+                dpName: pfCntCongestion_pfCntCongestion
+                format: "%6.2lf%s"
+              "IP Option":
+                dpName: pfCntIpOption_pfCntIpOption
+                format: "%6.2lf%s"
+              "Bad Checksum":
+                dpName: pfCntProtoCksum_pfCntProtoCksum
+                format: "%6.2lf%s"
+              "State Mismatch":
+                dpName: pfCntStateMismatch_pfCntStateMismatch
+                format: "%6.2lf%s"
+              "State Insert":
+                dpName: pfCntStateInsert_pfCntStateInsert
+                format: "%6.2lf%s"
+              "Rule State Lim.":
+                dpName: pfCntStateLimit_pfCntStateLimit
+                format: "%6.2lf%s"
+              "Src State Lim.":
+                dpName: pfCntSrcLimit_pfCntSrcLimit
+                format: "%6.2lf%s"
+              "Synproxy":
+                dpName: pfCntSynproxy_pfCntSynproxy
+                format: "%6.2lf%s"
+              "NAT":
+                dpName: pfCntTranslate_pfCntTranslate
+                format: "%6.2lf%s"
+              "No Route":
+                dpName: pfCntNoRoute_pfCntNoRoute
+                format: "%6.2lf%s"
 
-                    Log Interface - IPv4 Bytes:
-                        units: bytes
-                        graphpoints:
-                            Incoming:
-                                dpName: pfLogIfIpBytesIn_pfLogIfIpBytesIn
-                                format: "%6.2lf%s"
-                            Outgoing:
-                                dpName: pfLogIfIpBytesOut_pfLogIfIpBytesOut
-                                format: "%6.2lf%s"
+          Log Interface - IPv4 Bytes:
+            units: bytes
+            graphpoints:
+              Incoming:
+                dpName: pfLogIfIpBytesIn_pfLogIfIpBytesIn
+                format: "%6.2lf%s"
+              Outgoing:
+                dpName: pfLogIfIpBytesOut_pfLogIfIpBytesOut
+                format: "%6.2lf%s"
 
-                    Log Interface - IPv6 Bytes:
-                        units: bytes
-                        graphpoints:
-                            Incoming:
-                                dpName: pfLogIfIp6BytesIn_pfLogIfIp6BytesIn
-                                format: "%6.2lf%s"
-                            Outgoing:
-                                dpName: pfLogIfIp6BytesOut_pfLogIfIp6BytesOut
-                                format: "%6.2lf%s"
+          Log Interface - IPv6 Bytes:
+            units: bytes
+            graphpoints:
+              Incoming:
+                dpName: pfLogIfIp6BytesIn_pfLogIfIp6BytesIn
+                format: "%6.2lf%s"
+              Outgoing:
+                dpName: pfLogIfIp6BytesOut_pfLogIfIp6BytesOut
+                format: "%6.2lf%s"
 
-                    Log Interface - IPv4 Packets:
-                        units: packets
-                        graphpoints:
-                            Passed In:
-                                dpName: pfLogIfIpPktsInPass_pfLogIfIpPktsInPass
-                                format: "%6.2lf%s"
-                            Dropped In:
-                                dpName: pfLogIfIpPktsInDrop_pfLogIfIpPktsInDrop
-                                format: "%6.2lf%s"
-                            Passed Out:
-                                dpName: pfLogIfIpPktsOutPass_pfLogIfIpPktsOutPass
-                                format: "%6.2lf%s"
-                            Dropped Out:
-                                dpName: pfLogIfIpPktsOutDrop_pfLogIfIpPktsOutDrop
-                                format: "%6.2lf%s"
+          Log Interface - IPv4 Packets:
+            units: packets
+            graphpoints:
+              Passed In:
+                dpName: pfLogIfIpPktsInPass_pfLogIfIpPktsInPass
+                format: "%6.2lf%s"
+              Dropped In:
+                dpName: pfLogIfIpPktsInDrop_pfLogIfIpPktsInDrop
+                format: "%6.2lf%s"
+              Passed Out:
+                dpName: pfLogIfIpPktsOutPass_pfLogIfIpPktsOutPass
+                format: "%6.2lf%s"
+              Dropped Out:
+                dpName: pfLogIfIpPktsOutDrop_pfLogIfIpPktsOutDrop
+                format: "%6.2lf%s"
 
-                    Log Interface - IPv6 Packets:
-                        units: packets
-                        graphpoints:
-                            Passed In:
-                                dpName: pfLogIfIp6PktsInPass_pfLogIfIp6PktsInPass
-                                format: "%6.2lf%s"
-                            Dropped In:
-                                dpName: pfLogIfIp6PktsInDrop_pfLogIfIp6PktsInDrop
-                                format: "%6.2lf%s"
-                            Passed Out:
-                                dpName: pfLogIfIp6PktsOutPass_pfLogIfIp6PktsOutPass
-                                format: "%6.2lf%s"
-                            Dropped Out:
-                                dpName: pfLogIfIp6PktsOutDrop_pfLogIfIp6PktsOutDrop
-                                format: "%6.2lf%s"
+          Log Interface - IPv6 Packets:
+            units: packets
+            graphpoints:
+              Passed In:
+                dpName: pfLogIfIp6PktsInPass_pfLogIfIp6PktsInPass
+                format: "%6.2lf%s"
+              Dropped In:
+                dpName: pfLogIfIp6PktsInDrop_pfLogIfIp6PktsInDrop
+                format: "%6.2lf%s"
+              Passed Out:
+                dpName: pfLogIfIp6PktsOutPass_pfLogIfIp6PktsOutPass
+                format: "%6.2lf%s"
+              Dropped Out:
+                dpName: pfLogIfIp6PktsOutDrop_pfLogIfIp6PktsOutDrop
+                format: "%6.2lf%s"
 
-                    Source Tracking Table Entries:
-                        units: entries
-                        graphpoints:
-                            Entries:
-                                dpName: pfSrcTrackCount_pfSrcTrackCount
-                                format: "%6.2lf%s"
+          Source Tracking Table Entries:
+            units: entries
+            graphpoints:
+              Entries:
+                dpName: pfSrcTrackCount_pfSrcTrackCount
+                format: "%6.2lf%s"
 
-                    Source Tracking Table Operations:
-                        units: ops/sec
-                        graphpoints:
-                            Searches:
-                                dpName: pfSrcTrackSearches_pfSrcTrackSearches
-                                format: "%6.2lf%s"
-                            Inserts:
-                                dpName: pfSrcTrackInserts_pfSrcTrackInserts
-                                format: "%6.2lf%s"
-                            Removals:
-                                dpName: pfSrcTrackRemovals_pfSrcTrackRemovals
-                                format: "%6.2lf%s"
+          Source Tracking Table Operations:
+            units: ops/sec
+            graphpoints:
+              Searches:
+                dpName: pfSrcTrackSearches_pfSrcTrackSearches
+                format: "%6.2lf%s"
+              Inserts:
+                dpName: pfSrcTrackInserts_pfSrcTrackInserts
+                format: "%6.2lf%s"
+              Removals:
+                dpName: pfSrcTrackRemovals_pfSrcTrackRemovals
+                format: "%6.2lf%s"
 
-            PacketFilterInterface:
-                targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterInterface
-                description: PF interface monitoring for OpenBSD devices.
+      PacketFilterInterface:
+        targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterInterface
+        description: PF interface monitoring for OpenBSD devices.
 
-                datasources:
-                    pfIfRefs:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.4
-                        datapoints:
-                            pfIfRefs: GAUGE
-                    pfIfRules:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.5
-                        datapoints:
-                            pfIfRules: GAUGE
-                    pfIfIn4PassPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.6
-                        datapoints:
-                            pfIfIn4PassPkts: DERIVE
-                    pfIfIn4PassBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.7
-                        datapoints:
-                            pfIfIn4PassBytes: DERIVE
-                    pfIfIn4BlockPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.8
-                        datapoints:
-                            pfIfIn4BlockPkts: DERIVE
-                    pfIfIn4BlockBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.9
-                        datapoints:
-                            pfIfIn4BlockBytes: DERIVE
-                    pfIfOut4PassPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.10
-                        datapoints:
-                            pfIfOut4PassPkts: DERIVE
-                    pfIfOut4PassBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.11
-                        datapoints:
-                            pfIfOut4PassBytes: DERIVE
-                    pfIfOut4BlockPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.12
-                        datapoints:
-                            pfIfOut4BlockPkts: DERIVE
-                    pfIfOut4BlockBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.13
-                        datapoints:
-                            pfIfOut4BlockBytes: DERIVE
-                    pfIfIn6PassPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.14
-                        datapoints:
-                            pfIfIn6PassPkts: DERIVE
-                    pfIfIn6PassBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.15
-                        datapoints:
-                            pfIfIn6PassBytes: DERIVE
-                    pfIfIn6BlockPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.16
-                        datapoints:
-                            pfIfIn6BlockPkts: DERIVE
-                    pfIfIn6BlockBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.17
-                        datapoints:
-                            pfIfIn6BlockBytes: DERIVE
-                    pfIfOut6PassPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.17
-                        datapoints:
-                            pfIfOut6PassPkts: DERIVE
-                    pfIfOut6PassBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.19
-                        datapoints:
-                            pfIfOut6PassBytes: DERIVE
-                    pfIfOut6BlockPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.20
-                        datapoints:
-                            pfIfOut6BlockPkts: DERIVE
-                    pfIfOut6BlockBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.8.128.1.21
-                        datapoints:
-                            pfIfOut6BlockBytes: DERIVE
+        datasources:
+          pfIfRefs:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.4
+            datapoints:
+              pfIfRefs: GAUGE
+          pfIfRules:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.5
+            datapoints:
+              pfIfRules: GAUGE
+          pfIfIn4PassPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.6
+            datapoints:
+              pfIfIn4PassPkts: DERIVE
+          pfIfIn4PassBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.7
+            datapoints:
+              pfIfIn4PassBytes: DERIVE
+          pfIfIn4BlockPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.8
+            datapoints:
+              pfIfIn4BlockPkts: DERIVE
+          pfIfIn4BlockBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.9
+            datapoints:
+              pfIfIn4BlockBytes: DERIVE
+          pfIfOut4PassPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.10
+            datapoints:
+              pfIfOut4PassPkts: DERIVE
+          pfIfOut4PassBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.11
+            datapoints:
+              pfIfOut4PassBytes: DERIVE
+          pfIfOut4BlockPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.12
+            datapoints:
+              pfIfOut4BlockPkts: DERIVE
+          pfIfOut4BlockBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.13
+            datapoints:
+              pfIfOut4BlockBytes: DERIVE
+          pfIfIn6PassPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.14
+            datapoints:
+              pfIfIn6PassPkts: DERIVE
+          pfIfIn6PassBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.15
+            datapoints:
+              pfIfIn6PassBytes: DERIVE
+          pfIfIn6BlockPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.16
+            datapoints:
+              pfIfIn6BlockPkts: DERIVE
+          pfIfIn6BlockBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.17
+            datapoints:
+              pfIfIn6BlockBytes: DERIVE
+          pfIfOut6PassPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.17
+            datapoints:
+              pfIfOut6PassPkts: DERIVE
+          pfIfOut6PassBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.19
+            datapoints:
+              pfIfOut6PassBytes: DERIVE
+          pfIfOut6BlockPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.20
+            datapoints:
+              pfIfOut6BlockPkts: DERIVE
+          pfIfOut6BlockBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.8.128.1.21
+            datapoints:
+              pfIfOut6BlockBytes: DERIVE
 
-                graphs:
-                    References:
-                        units: references
-                        graphpoints:
-                            StateRefs:
-                                dpName: pfIfRefs_pfIfRefs
-                                format: "%6.2lf%s"
-                            Rule Refs:
-                                dpName: pfIfRules_pfIfRules
-                                format: "%6.2lf%s"
-                    IPv4 Packets:
-                        units: packets/sec
-                        graphpoints:
-                            Passed In:
-                                dpName: pfIfIn4PassPkts_pfIfIn4PassPkts
-                                format: "%6.2lf%s"
-                            Passed Out:
-                                dpName: pfIfOut4PassPkts_pfIfOut4PassPkts
-                                format: "%6.2lf%s"
-                            Blocked In:
-                                dpName: pfIfIn4BlockPkts_pfIfIn4BlockPkts
-                                format: "%6.2lf%s"
-                            Blocked Out:
-                                dpName: pfIfOut4BlockPkts_pfIfOut4BlockPkts
-                                format: "%6.2lf%s"
+        graphs:
+          References:
+            units: references
+            graphpoints:
+              StateRefs:
+                dpName: pfIfRefs_pfIfRefs
+                format: "%6.2lf%s"
+              Rule Refs:
+                dpName: pfIfRules_pfIfRules
+                format: "%6.2lf%s"
+          IPv4 Packets:
+            units: packets/sec
+            graphpoints:
+              Passed In:
+                dpName: pfIfIn4PassPkts_pfIfIn4PassPkts
+                format: "%6.2lf%s"
+              Passed Out:
+                dpName: pfIfOut4PassPkts_pfIfOut4PassPkts
+                format: "%6.2lf%s"
+              Blocked In:
+                dpName: pfIfIn4BlockPkts_pfIfIn4BlockPkts
+                format: "%6.2lf%s"
+              Blocked Out:
+                dpName: pfIfOut4BlockPkts_pfIfOut4BlockPkts
+                format: "%6.2lf%s"
 
-                    IPv6 Packets:
-                        units: packets/sec
-                        graphpoints:
-                            Passed In:
-                                dpName: pfIfIn6PassPkts_pfIfIn6PassPkts
-                                format: "%6.2lf%s"
-                            Passed Out:
-                                dpName: pfIfOut6PassPkts_pfIfOut6PassPkts
-                                format: "%6.2lf%s"
-                            Blocked In:
-                                dpName: pfIfIn6BlockPkts_pfIfIn6BlockPkts
-                                format: "%6.2lf%s"
-                            Blocked Out:
-                                dpName: pfIfOut6BlockPkts_pfIfOut6BlockPkts
-                                format: "%6.2lf%s"
+          IPv6 Packets:
+            units: packets/sec
+            graphpoints:
+              Passed In:
+                dpName: pfIfIn6PassPkts_pfIfIn6PassPkts
+                format: "%6.2lf%s"
+              Passed Out:
+                dpName: pfIfOut6PassPkts_pfIfOut6PassPkts
+                format: "%6.2lf%s"
+              Blocked In:
+                dpName: pfIfIn6BlockPkts_pfIfIn6BlockPkts
+                format: "%6.2lf%s"
+              Blocked Out:
+                dpName: pfIfOut6BlockPkts_pfIfOut6BlockPkts
+                format: "%6.2lf%s"
 
-                    IPv4 Bytes:
-                        units: bytes/sec
-                        graphpoints:
-                            Passed In:
-                                dpName: pfIfIn4PassBytes_pfIfIn4PassBytes
-                                format: "%6.2lf%s"
-                            Passed Out:
-                                dpName: pfIfOut4PassBytes_pfIfOut4PassBytes
-                                format: "%6.2lf%s"
-                            Blocked In:
-                                dpName: pfIfIn4BlockBytes_pfIfIn4BlockBytes
-                                format: "%6.2lf%s"
-                            Blocked Out:
-                                dpName: pfIfOut4BlockBytes_pfIfOut4BlockBytes
-                                format: "%6.2lf%s"
+          IPv4 Bytes:
+            units: bytes/sec
+            graphpoints:
+              Passed In:
+                dpName: pfIfIn4PassBytes_pfIfIn4PassBytes
+                format: "%6.2lf%s"
+              Passed Out:
+                dpName: pfIfOut4PassBytes_pfIfOut4PassBytes
+                format: "%6.2lf%s"
+              Blocked In:
+                dpName: pfIfIn4BlockBytes_pfIfIn4BlockBytes
+                format: "%6.2lf%s"
+              Blocked Out:
+                dpName: pfIfOut4BlockBytes_pfIfOut4BlockBytes
+                format: "%6.2lf%s"
 
-                    IPv6 Bytes:
-                        units: bytes/sec
-                        graphpoints:
-                            Passed In:
-                                dpName: pfIfIn6PassBytes_pfIfIn6PassBytes
-                                format: "%6.2lf%s"
-                            Passed Out:
-                                dpName: pfIfOut6PassBytes_pfIfOut6PassBytes
-                                format: "%6.2lf%s"
-                            Blocked In:
-                                dpName: pfIfIn6BlockBytes_pfIfIn6BlockBytes
-                                format: "%6.2lf%s"
-                            Blocked Out:
-                                dpName: pfIfOut6BlockBytes_pfIfOut6BlockBytes
-                                format: "%6.2lf%s"
+          IPv6 Bytes:
+            units: bytes/sec
+            graphpoints:
+              Passed In:
+                dpName: pfIfIn6PassBytes_pfIfIn6PassBytes
+                format: "%6.2lf%s"
+              Passed Out:
+                dpName: pfIfOut6PassBytes_pfIfOut6PassBytes
+                format: "%6.2lf%s"
+              Blocked In:
+                dpName: pfIfIn6BlockBytes_pfIfIn6BlockBytes
+                format: "%6.2lf%s"
+              Blocked Out:
+                dpName: pfIfOut6BlockBytes_pfIfOut6BlockBytes
+                format: "%6.2lf%s"
 
-            PacketFilterTable:
-                targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterTable
-                description: PF table monitoring for OpenBSD devices.
+      PacketFilterTable:
+        targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterTable
+        description: PF table monitoring for OpenBSD devices.
 
-                datasources:
-                    pfTblAddresses:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.3
-                        datapoints:
-                            pfTblAddresses: GAUGE
-                    pfTblAnchorRefs:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.4
-                        datapoints:
-                            pfTblAnchorRefs: GAUGE
-                    pfTblRuleRefs:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.5
-                        datapoints:
-                            pfTblRuleRefs: GAUGE
-                    pfTblEvalsMatch:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.6
-                        datapoints:
-                            pfTblEvalsMatch: DERIVE
-                    pfTblEvalsNoMatch:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.7
-                        datapoints:
-                            pfTblEvalsNoMatch: DERIVE
-                    pfTblInPassPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.8
-                        datapoints:
-                            pfTblInPassPkts: DERIVE
-                    pfTblInPassBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.9
-                        datapoints:
-                            pfTblInPassBytes: DERIVE
-                    pfTblInBlockPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.10
-                        datapoints:
-                            pfTblInBlockPkts: DERIVE
-                    pfTblInBlockBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.11
-                        datapoints:
-                            pfTblInBlockBytes: DERIVE
-                    pfTblInXPassPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.12
-                        datapoints:
-                            pfTblInXPassPkts: DERIVE
-                    pfTblInXPassBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.13
-                        datapoints:
-                            pfTblInXPassBytes: DERIVE
-                    pfTblOutPassPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.14
-                        datapoints:
-                            pfTblOutPassPkts: DERIVE
-                    pfTblOutPassBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.15
-                        datapoints:
-                            pfTblOutPassBytes: DERIVE
-                    pfTblOutBlockPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.16
-                        datapoints:
-                            pfTblOutBlockPkts: DERIVE
-                    pfTblOutBlockBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.17
-                        datapoints:
-                            pfTblOutBlockBytes: DERIVE
-                    pfTblOutXPassPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.18
-                        datapoints:
-                            pfTblOutXPassPkts: DERIVE
-                    pfTblOutXPassBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.19
-                        datapoints:
-                            pfTblOutXPassBytes: DERIVE
-                    pfTblStatsCleared:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.20
-                        datapoints:
-                            pfTblStatsCleared: GAUGE
-                    pfTblInMatchPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.21
-                        datapoints:
-                            pfTblInMatchPkts: DERIVE
-                    pfTblInMatchBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.22
-                        datapoints:
-                            pfTblInMatchBytes: DERIVE
-                    pfTblOutMatchPkts:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.23
-                        datapoints:
-                            pfTblOutMatchPkts: DERIVE
-                    pfTblOutMatchBytes:
-                        type: SNMP
-                        component: "${here/id}"
-                        oid: 1.3.6.1.4.1.30155.1.9.128.1.24
-                        datapoints:
-                            pfTblOutMatchBytes: DERIVE
+        datasources:
+          pfTblAddresses:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.3
+            datapoints:
+              pfTblAddresses: GAUGE
+          pfTblAnchorRefs:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.4
+            datapoints:
+              pfTblAnchorRefs: GAUGE
+          pfTblRuleRefs:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.5
+            datapoints:
+              pfTblRuleRefs: GAUGE
+          pfTblEvalsMatch:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.6
+            datapoints:
+              pfTblEvalsMatch: DERIVE
+          pfTblEvalsNoMatch:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.7
+            datapoints:
+              pfTblEvalsNoMatch: DERIVE
+          pfTblInPassPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.8
+            datapoints:
+              pfTblInPassPkts: DERIVE
+          pfTblInPassBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.9
+            datapoints:
+              pfTblInPassBytes: DERIVE
+          pfTblInBlockPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.10
+            datapoints:
+              pfTblInBlockPkts: DERIVE
+          pfTblInBlockBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.11
+            datapoints:
+              pfTblInBlockBytes: DERIVE
+          pfTblInXPassPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.12
+            datapoints:
+              pfTblInXPassPkts: DERIVE
+          pfTblInXPassBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.13
+            datapoints:
+              pfTblInXPassBytes: DERIVE
+          pfTblOutPassPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.14
+            datapoints:
+              pfTblOutPassPkts: DERIVE
+          pfTblOutPassBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.15
+            datapoints:
+              pfTblOutPassBytes: DERIVE
+          pfTblOutBlockPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.16
+            datapoints:
+              pfTblOutBlockPkts: DERIVE
+          pfTblOutBlockBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.17
+            datapoints:
+              pfTblOutBlockBytes: DERIVE
+          pfTblOutXPassPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.18
+            datapoints:
+              pfTblOutXPassPkts: DERIVE
+          pfTblOutXPassBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.19
+            datapoints:
+              pfTblOutXPassBytes: DERIVE
+          pfTblStatsCleared:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.20
+            datapoints:
+              pfTblStatsCleared: GAUGE
+          pfTblInMatchPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.21
+            datapoints:
+              pfTblInMatchPkts: DERIVE
+          pfTblInMatchBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.22
+            datapoints:
+              pfTblInMatchBytes: DERIVE
+          pfTblOutMatchPkts:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.23
+            datapoints:
+              pfTblOutMatchPkts: DERIVE
+          pfTblOutMatchBytes:
+            type: SNMP
+            component: "${here/id}"
+            oid: 1.3.6.1.4.1.30155.1.9.128.1.24
+            datapoints:
+              pfTblOutMatchBytes: DERIVE
 
-                graphs:
-                    Addresses in Table:
-                        units: addresses
-                        graphpoints:
-                            Addresses:
-                                dpName: pfTblAddresses_pfTblAddresses
-                                format: "%6.2lf%s"
+        graphs:
+          Addresses in Table:
+            units: addresses
+            graphpoints:
+              Addresses:
+                dpName: pfTblAddresses_pfTblAddresses
+                format: "%6.2lf%s"
 
-                    Table References:
-                        units: references
-                        graphpoints:
-                            Anchor Refs:
-                                dpName: pfTblAnchorRefs_pfTblAnchorRefs
-                                format: "%6.2lf%s"
-                            Rule Refs:
-                                dpName: pfTblRuleRefs_pfTblRuleRefs
-                                format: "%6.2lf%s"
+          Table References:
+            units: references
+            graphpoints:
+              Anchor Refs:
+                dpName: pfTblAnchorRefs_pfTblAnchorRefs
+                format: "%6.2lf%s"
+              Rule Refs:
+                dpName: pfTblRuleRefs_pfTblRuleRefs
+                format: "%6.2lf%s"
 
-                    Evaluations:
-                        units: evals/sec
-                        graphpoints:
-                            Matched:
-                                dpName: pfTblEvalsMatch_pfTblEvalsMatch
-                            Not Matched:
-                                dpName: pfTblEvalsNoMatch_pfTblEvalsNoMatch
+          Evaluations:
+            units: evals/sec
+            graphpoints:
+              Matched:
+                dpName: pfTblEvalsMatch_pfTblEvalsMatch
+              Not Matched:
+                dpName: pfTblEvalsNoMatch_pfTblEvalsNoMatch
 
-                    Packets:
-                        units: packets/sec
-                        graphpoints:
-                            Matched In:
-                                dpName: pfTblInMatchPkts_pfTblInMatchPkts
-                                format: "%6.2lf%s"
-                            Matched Out:
-                                dpName: pfTblOutMatchPkts_pfTblOutMatchPkts
-                                format: "%6.2lf%s"
+          Packets:
+            units: packets/sec
+            graphpoints:
+              Matched In:
+                dpName: pfTblInMatchPkts_pfTblInMatchPkts
+                format: "%6.2lf%s"
+              Matched Out:
+                dpName: pfTblOutMatchPkts_pfTblOutMatchPkts
+                format: "%6.2lf%s"
 
-                            Passed In:
-                                dpName: pfTblInPassPkts_pfTblInPassPkts
-                                format: "%6.2lf%s"
-                            Passed In (No Addr):
-                                dpName: pfTblInXPassPkts_pfTblInXPassPkts
-                                format: "%6.2lf%s"
-                            Passed Out:
-                                dpName: pfTblOutPassPkts_pfTblOutPassPkts
-                                format: "%6.2lf%s"
+              Passed In:
+                dpName: pfTblInPassPkts_pfTblInPassPkts
+                format: "%6.2lf%s"
+              Passed In (No Addr):
+                dpName: pfTblInXPassPkts_pfTblInXPassPkts
+                format: "%6.2lf%s"
+              Passed Out:
+                dpName: pfTblOutPassPkts_pfTblOutPassPkts
+                format: "%6.2lf%s"
 
-                            Blocked In:
-                                dpName: pfTblInBlockPkts_pfTblInBlockPkts
-                                format: "%6.2lf%s"
-                            Blocked Out:
-                                dpName: pfTblOutBlockPkts_pfTblOutBlockPkts
-                                format: "%6.2lf%s"
+              Blocked In:
+                dpName: pfTblInBlockPkts_pfTblInBlockPkts
+                format: "%6.2lf%s"
+              Blocked Out:
+                dpName: pfTblOutBlockPkts_pfTblOutBlockPkts
+                format: "%6.2lf%s"
 
-                    Bytes:
-                        units: bytes/sec
-                        graphpoints:
-                            Matched In:
-                                dpName: pfTblInMatchBytes_pfTblInMatchBytes
-                                format: "%6.2lf%s"
-                            Matched Out:
-                                dpName: pfTblOutMatchBytes_pfTblOutMatchBytes
-                                format: "%6.2lf%s"
+          Bytes:
+            units: bytes/sec
+            graphpoints:
+              Matched In:
+                dpName: pfTblInMatchBytes_pfTblInMatchBytes
+                format: "%6.2lf%s"
+              Matched Out:
+                dpName: pfTblOutMatchBytes_pfTblOutMatchBytes
+                format: "%6.2lf%s"
 
-                            Passed In:
-                                dpName: pfTblInPassBytes_pfTblInPassBytes
-                                format: "%6.2lf%s"
-                            Passed In (No Addr):
-                                dpName: pfTblInXPassBytes_pfTblInXPassBytes
-                                format: "%6.2lf%s"
-                            Passed Out:
-                                dpName: pfTblOutPassBytes_pfTblOutPassBytes
-                                format: "%6.2lf%s"
+              Passed In:
+                dpName: pfTblInPassBytes_pfTblInPassBytes
+                format: "%6.2lf%s"
+              Passed In (No Addr):
+                dpName: pfTblInXPassBytes_pfTblInXPassBytes
+                format: "%6.2lf%s"
+              Passed Out:
+                dpName: pfTblOutPassBytes_pfTblOutPassBytes
+                format: "%6.2lf%s"
 
-                            Blocked In:
-                                dpName: pfTblInBlockBytes_pfTblInBlockBytes
-                                format: "%6.2lf%s"
-                            Blocked Out:
-                                dpName: pfTblOutBlockBytes_pfTblOutBlockBytes
-                                format: "%6.2lf%s"
+              Blocked In:
+                dpName: pfTblInBlockBytes_pfTblInBlockBytes
+                format: "%6.2lf%s"
+              Blocked Out:
+                dpName: pfTblOutBlockBytes_pfTblOutBlockBytes
+                format: "%6.2lf%s"
 
-            PacketFilterLabel:
-                targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterLabel
-                description: PF label monitoring for OpenBSD devices.
+      PacketFilterLabel:
+        targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterLabel
+        description: PF label monitoring for OpenBSD devices.
 
-                datasources:
-                        pfLabelEvals:
-                            type: SNMP
-                            component: "${here/id}"
-                            oid: 1.3.6.1.4.1.30155.1.10.128.1.3
-                            datapoints:
-                                pfLabelEvals: DERIVE
-                        pfLabelPkts:
-                            type: SNMP
-                            component: "${here/id}"
-                            oid: 1.3.6.1.4.1.30155.1.10.128.1.4
-                            datapoints:
-                                pfLabelPkts: DERIVE
-                        pfLabelBytes:
-                            type: SNMP
-                            component: "${here/id}"
-                            oid: 1.3.6.1.4.1.30155.1.10.128.1.5
-                            datapoints:
-                                pfLabelBytes: DERIVE
-                        pfLabelInPkts:
-                            type: SNMP
-                            component: "${here/id}"
-                            oid: 1.3.6.1.4.1.30155.1.10.128.1.6
-                            datapoints:
-                                pfLabelInPkts: DERIVE
-                        pfLabelInBytes:
-                            type: SNMP
-                            component: "${here/id}"
-                            oid: 1.3.6.1.4.1.30155.1.10.128.1.7
-                            datapoints:
-                                pfLabelInBytes: DERIVE
-                        pfLabelOutPkts:
-                            type: SNMP
-                            component: "${here/id}"
-                            oid: 1.3.6.1.4.1.30155.1.10.128.1.8
-                            datapoints:
-                                pfLabelOutPkts: DERIVE
-                        pfLabelOutBytes:
-                            type: SNMP
-                            component: "${here/id}"
-                            oid: 1.3.6.1.4.1.30155.1.10.128.1.9
-                            datapoints:
-                                pfLabelOutBytes: DERIVE
-                        pfLabelTotalStates:
-                            type: SNMP
-                            component: "${here/id}"
-                            oid: 1.3.6.1.4.1.30155.1.10.128.1.10
-                            datapoints:
-                                pfLabelTotalStates: DERIVE
+        datasources:
+            pfLabelEvals:
+              type: SNMP
+              component: "${here/id}"
+              oid: 1.3.6.1.4.1.30155.1.10.128.1.3
+              datapoints:
+                pfLabelEvals: DERIVE
+            pfLabelPkts:
+              type: SNMP
+              component: "${here/id}"
+              oid: 1.3.6.1.4.1.30155.1.10.128.1.4
+              datapoints:
+                pfLabelPkts: DERIVE
+            pfLabelBytes:
+              type: SNMP
+              component: "${here/id}"
+              oid: 1.3.6.1.4.1.30155.1.10.128.1.5
+              datapoints:
+                pfLabelBytes: DERIVE
+            pfLabelInPkts:
+              type: SNMP
+              component: "${here/id}"
+              oid: 1.3.6.1.4.1.30155.1.10.128.1.6
+              datapoints:
+                pfLabelInPkts: DERIVE
+            pfLabelInBytes:
+              type: SNMP
+              component: "${here/id}"
+              oid: 1.3.6.1.4.1.30155.1.10.128.1.7
+              datapoints:
+                pfLabelInBytes: DERIVE
+            pfLabelOutPkts:
+              type: SNMP
+              component: "${here/id}"
+              oid: 1.3.6.1.4.1.30155.1.10.128.1.8
+              datapoints:
+                pfLabelOutPkts: DERIVE
+            pfLabelOutBytes:
+              type: SNMP
+              component: "${here/id}"
+              oid: 1.3.6.1.4.1.30155.1.10.128.1.9
+              datapoints:
+                pfLabelOutBytes: DERIVE
+            pfLabelTotalStates:
+              type: SNMP
+              component: "${here/id}"
+              oid: 1.3.6.1.4.1.30155.1.10.128.1.10
+              datapoints:
+                pfLabelTotalStates: DERIVE
 
-                graphs:
-                    Rule Evaluations:
-                        units: evals/sec
-                        graphpoints:
-                            Addresses:
-                                dpName: pfLabelEvals_pfLabelEvals
-                                format: "%6.2lf%s"
-                    States Created by Rule(s):
-                        units: states
-                        graphpoints:
-                            Total States:
-                                dpName: pfLabelTotalStates_pfLabelTotalStates
-                                format: "%6.2lf%s"
+        graphs:
+          Rule Evaluations:
+            units: evals/sec
+            graphpoints:
+              Addresses:
+                dpName: pfLabelEvals_pfLabelEvals
+                format: "%6.2lf%s"
+          States Created by Rule(s):
+            units: states
+            graphpoints:
+              Total States:
+                dpName: pfLabelTotalStates_pfLabelTotalStates
+                format: "%6.2lf%s"
 
-                    Packets:
-                        units: packets/sec
-                        graphpoints:
-                            Incoming:
-                                dpName: pfLabelInPkts_pfLabelInPkts
-                                format: "%6.2lf%s"
-                            Outgoing:
-                                dpName: pfLabelOutPkts_pfLabelOutPkts
-                                format: "%6.2lf%s"
-                            Total:
-                                dpName: pfLabelPkts_pfLabelPkts
-                                format: "%6.2lf%s"
+          Packets:
+            units: packets/sec
+            graphpoints:
+              Incoming:
+                dpName: pfLabelInPkts_pfLabelInPkts
+                format: "%6.2lf%s"
+              Outgoing:
+                dpName: pfLabelOutPkts_pfLabelOutPkts
+                format: "%6.2lf%s"
+              Total:
+                dpName: pfLabelPkts_pfLabelPkts
+                format: "%6.2lf%s"
 
-                    Bytes:
-                        units: bytes/sec
-                        graphpoints:
-                            Incoming:
-                                dpName: pfLabelInBytes_pfLabelInBytes
-                                format: "%6.2lf%s"
-                            Outgoing:
-                                dpName: pfLabelOutBytes_pfLabelOutBytes
-                                format: "%6.2lf%s"
-                            Total:
-                                dpName: pfLabelBytes_pfLabelBytes
-                                format: "%6.2lf%s"
+          Bytes:
+            units: bytes/sec
+            graphpoints:
+              Incoming:
+                dpName: pfLabelInBytes_pfLabelInBytes
+                format: "%6.2lf%s"
+              Outgoing:
+                dpName: pfLabelOutBytes_pfLabelOutBytes
+                format: "%6.2lf%s"
+              Total:
+                dpName: pfLabelBytes_pfLabelBytes
+                format: "%6.2lf%s"
