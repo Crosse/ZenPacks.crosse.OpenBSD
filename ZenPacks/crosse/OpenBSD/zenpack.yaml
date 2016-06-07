@@ -36,9 +36,11 @@ classes:
       pfHostId:
         label: Host ID
         type: string
+        content_width: 60
         order: 1
       pfRunning:
         label: Running
+        label_width: 37
         type: boolean
         renderer: Zenoss.render.checkbox
         order: 2
@@ -46,6 +48,7 @@ classes:
       pfDebug:
         label: Logging Level
         short_label: Log Level
+        label_width: 50
         enum: {0: "Emergency", 1: "Alert", 2: "Critical", 3: "Error", 4: "Warning", 5: "Notice", 6: "Info", 7: "Debug"}
         order: 3
       pfCntMatch:
@@ -54,15 +57,19 @@ classes:
         datapoint: pfCntMatch_pfCntMatch
       pfStateCount:
         label: State Table Entries
+        label_width: 90
         order: 6
         datapoint: pfStateCount_pfStateCount
       pfLogIfName:
         label: Log Interface
         type: string
+        label_width: 60
         order: 7
 
   PacketFilterInterface:
     label: Packet Filter Interface
+    short_label: Interface
+    label_width: 40
     order: 11
 
     properties:
@@ -86,6 +93,8 @@ classes:
 
   PacketFilterTable:
     label: Packet Filter Table
+    short_label: Table
+    label_width: 30
     order: 12
 
     properties:
@@ -109,6 +118,8 @@ classes:
 
   PacketFilterLabel:
     label: Packet Filter Label
+    short_label: Label
+    label_width: 30
     order: 13
 
     properties:
