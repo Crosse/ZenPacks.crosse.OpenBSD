@@ -4,7 +4,7 @@ from Products.DataCollector.plugins.CollectorPlugin import (
 
 
 class PacketFilter(SnmpPlugin):
-    relname = 'packetFilters'
+    relname = 'packetFilter'
     modname = 'ZenPacks.crosse.OpenBSD.PacketFilter'
 
     snmpGetMap = (

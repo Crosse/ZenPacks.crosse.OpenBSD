@@ -4,6 +4,7 @@ from Products.DataCollector.plugins.CollectorPlugin import (
         )
 
 class PacketFilterInterface(SnmpPlugin):
+    compname = 'packetFilter/pf'
     relname = 'packetFilterInterfaces'
     modname = 'ZenPacks.crosse.OpenBSD.PacketFilterInterface'
 

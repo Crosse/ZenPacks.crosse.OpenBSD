@@ -5,6 +5,7 @@ from Products.DataCollector.plugins.CollectorPlugin import (
 
 
 class PacketFilterLabel(SnmpPlugin):
+    compname = 'packetFilter/pf'
     relname = 'packetFilterLabels'
     modname = 'ZenPacks.crosse.OpenBSD.PacketFilterLabel'
 

@@ -146,10 +146,13 @@ classes:
 
 
 class_relationships:
-  - OpenBSDDevice(packetFilters) 1:MC (openBSDDevice)PacketFilter
-  - OpenBSDDevice(packetFilterInterfaces) 1:MC (openBSDDevice)PacketFilterInterface
-  - OpenBSDDevice(packetFilterTables) 1:MC (openBSDDevice)PacketFilterTable
-  - OpenBSDDevice(packetFilterLabels) 1:MC (openBSDDevice)PacketFilterLabel
+  - OpenBSDDevice(packetFilter) 1:MC PacketFilter(openBSDDevice)
+  - OpenBSDDevice(pfsync) 1:MC PFSync(openBSDDevice)
+
+  - PacketFilter(packetFilterInterfaces) 1:MC PacketFilterInterface(packetFilter)
+  - PacketFilter(packetFilterLabels) 1:MC PacketFilterLabel(packetFilter)
+  - PacketFilter(packetFilterTables) 1:MC PacketFilterTable(packetFilter)
+
 
 device_classes:
   /Server/OpenBSD:
