@@ -28,7 +28,6 @@ classes:
     label: Packet Filter
     plural_label: Packet Filter
     order: 10
-
     properties:
       DEFAULTS:
         type: int
@@ -66,12 +65,12 @@ classes:
         label_width: 60
         order: 7
 
+
   PacketFilterInterface:
     label: Packet Filter Interface
     short_label: Interface
     label_width: 40
     order: 11
-
     properties:
       DEFAULTS:
         type: int
@@ -91,12 +90,12 @@ classes:
         order: 3
         datapoint: pfIfRules_pfIfRules
 
+
   PacketFilterTable:
     label: Packet Filter Table
     short_label: Table
     label_width: 30
     order: 12
-
     properties:
       DEFAULTS:
         type: int
@@ -116,12 +115,12 @@ classes:
         order: 3
         datapoint: pfTblRuleRefs_pfTblRuleRefs
 
+
   PacketFilterLabel:
     label: Packet Filter Label
     short_label: Label
     label_width: 30
     order: 13
-
     properties:
       DEFAULTS:
         type: int
@@ -554,6 +553,7 @@ device_classes:
                 dpName: pfSrcTrackRemovals_pfSrcTrackRemovals
                 format: "%6.2lf%s"
 
+
       PacketFilterInterface:
         targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterInterface
         description: PF interface monitoring for OpenBSD devices.
@@ -678,6 +678,7 @@ device_classes:
               Rule Refs:
                 dpName: pfIfRules_pfIfRules
                 format: "%6.2lf%s"
+
           IPv4 Packets:
             units: packets/sec
             graphpoints:
@@ -741,6 +742,7 @@ device_classes:
               Blocked Out:
                 dpName: pfIfOut6BlockBytes_pfIfOut6BlockBytes
                 format: "%6.2lf%s"
+
 
       PacketFilterTable:
         targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterTable
@@ -960,6 +962,7 @@ device_classes:
                 dpName: pfTblOutBlockBytes_pfTblOutBlockBytes
                 format: "%6.2lf%s"
 
+
       PacketFilterLabel:
         targetPythonClass: ZenPacks.crosse.OpenBSD.PacketFilterLabel
         description: PF label monitoring for OpenBSD devices.
@@ -1021,6 +1024,7 @@ device_classes:
               Addresses:
                 dpName: pfLabelEvals_pfLabelEvals
                 format: "%6.2lf%s"
+
           States Created by Rule(s):
             units: states
             graphpoints:
