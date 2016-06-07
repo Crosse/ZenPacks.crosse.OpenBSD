@@ -161,18 +161,24 @@ device_classes:
       zInterfaceMapIgnoreNames: "^pflog.*"
       zPfIgnoreInterfaces: "^pflog.*"
       zCollectorPlugins:
+        - zenoss.snmp.DeviceMap
+        - zenoss.snmp.NewDeviceMap
+        - HPDeviceMap
+        - DellDeviceMap
+        - zenoss.snmp.InterfaceMap
+        - zenoss.snmp.RouteMap
+        - zenoss.snmp.IpServiceMap
+        - zenoss.snmp.HRFileSystemMap
+        - zenoss.snmp.HRSWRunMap
+        - zenoss.snmp.CpuMap
+        - HPCPUMap
+        - DellCPUMap
+        - DellPCIMap
+        - zenoss.snmp.SnmpV3EngineIdMap
         - crosse.snmp.OpenBSD.PacketFilter
         - crosse.snmp.OpenBSD.PacketFilterInterface
         - crosse.snmp.OpenBSD.PacketFilterLabel
         - crosse.snmp.OpenBSD.PacketFilterTable
-        - zenoss.snmp.CpuMap
-        - zenoss.snmp.DeviceMap
-        - zenoss.snmp.HRFileSystemMap
-        - zenoss.snmp.InterfaceMap
-        - zenoss.snmp.IpServiceMap
-        - zenoss.snmp.NewDeviceMap
-        - zenoss.snmp.RouteMap
-        - zenoss.snmp.SnmpV3EngineIdMap
 
     templates:
       PacketFilter:
