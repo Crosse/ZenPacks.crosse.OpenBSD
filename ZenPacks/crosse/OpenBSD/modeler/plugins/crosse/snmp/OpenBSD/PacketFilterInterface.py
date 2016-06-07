@@ -3,7 +3,6 @@ from Products.DataCollector.plugins.CollectorPlugin import (
         SnmpPlugin, GetTableMap, GetMap,
         )
 
-
 class PacketFilterInterface(SnmpPlugin):
     relname = 'packetFilterInterfaces'
     modname = 'ZenPacks.crosse.OpenBSD.PacketFilterInterface'
@@ -59,5 +58,4 @@ class PacketFilterInterface(SnmpPlugin):
             del values['pfIfDescr']
 
             rm.append(self.objectMap(values))
-
         return rm
