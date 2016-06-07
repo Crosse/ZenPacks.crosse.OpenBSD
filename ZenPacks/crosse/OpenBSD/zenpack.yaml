@@ -17,12 +17,14 @@ zProperties:
 
 
 classes:
+  DEFAULTS:
+    base: [zenpacklib.Component]
+
   OpenBSDDevice:
     base: [zenpacklib.Device]
     label: OpenBSD
 
   PacketFilter:
-    base: [zenpacklib.Component]
     label: Packet Filter
     plural_label: Packet Filter
     order: 10
@@ -60,85 +62,67 @@ classes:
         order: 7
 
   PacketFilterInterface:
-    base: [zenpacklib.Component]
     label: Packet Filter Interface
     order: 11
 
     properties:
       DEFAULTS:
         type: int
-        grid_display: false
 
       pfIfType:
         label: Type
         enum: {0: "Group", 1: "Interface", 2: "Removed"}
         order: 1
-        grid_display: true
       pfIfRefs:
         label: State/Source Track References
         short_label: State Refs
         order: 2
-        grid_display: true
         datapoint: pfIfRefs_pfIfRefs
       pfIfRules:
         label: Rule References
         short_label: Rule Refs
         order: 3
-        grid_display: true
         datapoint: pfIfRules_pfIfRules
 
   PacketFilterTable:
-    base: [zenpacklib.Component]
     label: Packet Filter Table
     order: 12
 
     properties:
       DEFAULTS:
         type: int
-        details_display: false
-        grid_display: false
 
       pfTblAddresses:
         label: Addresses
         order: 1
-        details_display: true
-        grid_display: true
         datapoint: pfTblAddresses_pfTblAddresses
       pfTblAnchorRefs:
         label: Anchor References
         short_label: Anchor Refs
         order: 2
-        details_display: true
-        grid_display: true
         datapoint: pfTblAnchorRefs_pfTblAnchorRefs
       pfTblRuleRefs:
         label: Rule References
         short_label: Rule Refs
         order: 3
-        details_display: true
-        grid_display: true
         datapoint: pfTblRuleRefs_pfTblRuleRefs
 
   PacketFilterLabel:
-    base: [zenpacklib.Component]
     label: Packet Filter Label
     order: 13
 
     properties:
       DEFAULTS:
         type: int
-        grid_display: false
 
       pfLabelPkts:
         label: Matched Packets
         order: 2
-        grid_display: true
         datapoint: pfLabelPkts_pfLabelPkts
       pfLabelBytes:
         label: Matched Bytes
         renderer: Zenoss.render.bytesString
         order: 3
-        grid_display: true
         datapoint: pfLabelBytes_pfLabelBytes
       pfLabelEvals:
         label: Rule Evaluations
@@ -147,7 +131,6 @@ classes:
       pfLabelTotalStates:
         label: Total States
         order: 4
-        grid_display: true
         datapoint: pfLabelTotalStates_pfLabelTotalStates
 
 
