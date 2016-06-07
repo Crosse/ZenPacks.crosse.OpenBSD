@@ -20,6 +20,8 @@ class PacketFilter(SnmpPlugin):
             )
 
     def process(self, device, results, log):
+        log.info('Modeler %s processing data for device %s',
+                self.name(), device.id)
 
         values = {}
         for key in results[0].keys():
